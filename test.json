@@ -1,36 +1,43 @@
 {
   "nodes": [
     {
-      "id": "red"
+      "id": 1,
+      "color": "red",
+      "label": "Tomatoe"
     },
     {
-      "id": "orange"
+      "id": 2,
+      "color": "orange"
     },
     {
-      "id": "yellow"
+      "id": 3,
+      "color": "yellow"
     },
     {
-      "id": "green"
+      "id": 4,
+      "color": "green"
     },
     {
-      "id": "blue"
+      "id": 5,
+      "color": "blue"
     },
     {
-      "id": "violet"
+      "id": 6,
+      "color": "violet"
     }
   ],
   "links": [
     {
-      "source": "red",
-      "target": "yellow"
+      "source": 1,
+      "target": 3
     },
     {
-      "source": "red",
-      "target": "blue"
+      "source": 1,
+      "target": 2
     },
     {
-      "source": "red",
-      "target": "green"
+      "source": 1,
+      "target": 4
     }
   ]
 }

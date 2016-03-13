@@ -77,7 +77,7 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
         .attr("class", "node")
         .attr("r", 6)
         .style("fill", function (d) {
-          return d.id;
+          return d.color;
         })
         .call(force.drag);
       force.on("tick", function () {
