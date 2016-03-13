@@ -5,12 +5,14 @@
 
 let app = angular.module('PjDke', ['D3js']);
 app.controller('TestController', ['$scope', '$http', function ($scope, $http) {
-  $scope.graphData = {};
+  $scope.nodes = [];
+  $scope.links = [];
   $http({
     method: 'GET',
     url: 'test.json'
   }).then(function onComplete(res) {
-    $scope.graphData = res.data;
+    $scope.nodes = res.data.nodes;
+    $scope.links = res.data.links;
   }, function onError(res) {
     console.log(JSON.stringify(res))
   });

@@ -11,9 +11,10 @@
 </head>
 <body ng-app="PjDke" ng-controller="TestController as tCtrl">
 <h1>AngularJS</h1>
-<p>Nodes: {{graphData.nodes.length}}<br>
-    Links: {{graphData.links.length}}</p>
-<div width="300" height="300" charge="100" distance="50" d3-force="{{graphData}}">
+<p>Nodes: {{nodes.length}}<br>
+    Links: {{links.length}}</p>
+<div width="300" height="300" charge="100" distance="50" d3-nodes="{{nodes}}" d3-links="{{links}}"
+     d3-force="">
 </div>
 </body>
 </html>

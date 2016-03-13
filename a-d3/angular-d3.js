@@ -25,11 +25,17 @@ ad3.factory('svgTag', ['uniqueId', '$q', function (uniqueId, $q) {
 }]);
 ad3.directive('d3Force', ['svgTag', function (svgTag) {
   let createDiagram = function ($scope, elem, attrs) {
-    let data = attrs.d3Force;
-    if (data === undefined)return;
-    data = JSON.parse(data);
-    if (data.nodes === undefined)
+    let nodes = attrs.d3Nodes, links = attrs.d3Links;
+    try {
+      nodes = JSON.parse(nodes);
+      links = JSON.parse(links);
+    } catch (e) {
+      console.log(e);
       return;
+    }
+    if (nodes.length === 0 || links.length === 0) {
+      return;
+    }
     const defaultW = 960;
     const defaultH = 500;
     const defaultCharge = 200;
@@ -54,10 +60,8 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
     let labelDistance = 0;
     svgTag(elem, w, h).then(function (uniqueId) {
       let svg = d3.select("#" + uniqueId);
-      let nodes = data.nodes;
       let labelAnchors = [];
       let labelAnchorLinks = [];
-      let links = data.links;
 
       nodes.forEach(function (node) {
         if (node.label === undefined) {
@@ -159,7 +163,10 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
   return {
     restrict: "A",
     link: function ($scope, elem, attrs) {
-      attrs.$observe('d3Force', function () {
+      attrs.$observe('d3Nodes', function () {
+        createDiagram($scope, elem, attrs);
+      });
+      attrs.$observe('d3Links', function () {
         createDiagram($scope, elem, attrs);
       });
       attrs.$observe('width', function () {
