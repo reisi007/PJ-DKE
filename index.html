@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <script src="lib/angular.js"></script>
     <script src="lib/d3.js"></script>
@@ -11,8 +11,9 @@
 </head>
 <body ng-app="PjDke" ng-controller="TestController as tCtrl">
 <h1>AngularJS</h1>
-<<div width="960" height="500" charge="100" distance="100" d3-force="{{graphData}}">
-
+<p>Nodes: {{graphData.nodes.length}}<br>
+    Links: {{graphData.links.length}}</p>
+<div width="300" height="300" charge="100" distance="50" d3-force="{{graphData}}">
 </div>
 </body>
 </html>

@@ -50,58 +50,111 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
         d = tmp;
       }
     }
-    let force = d3.layout.force().charge(c).linkDistance(d).size([w, h]);
 
-    let d3nodeMap = {};
-    $scope.links = data.links;
-    data.nodes.forEach(function (node) {
-      d3nodeMap[node.id] = node;
-    });
-    data.links.forEach(function (link) {
-      link.source = d3nodeMap[link.source];
-      link.target = d3nodeMap[link.target];
-    });
-    force.nodes(data.nodes).links(data.links).start();
+    let labelDistance = 0;
+    svgTag(elem, w, h).then(function (uniqueId) {
+      let svg = d3.select("#" + uniqueId);
+      let nodes = data.nodes;
+      let labelAnchors = [];
+      let labelAnchorLinks = [];
+      let links = data.links;
 
+      nodes.forEach(function (node) {
+        if (node.label === undefined) {
+          node.label = "";
+        }
 
-    svgTag(elem, w, h).then(function onComplete(uniqueId) {
-      let svg = d3.select("svg#" + uniqueId);
-      let link = svg.selectAll(".link")
-        .data(data.links)
-        .enter().append("line")
-        .attr("class", "link");
-
-      let node = svg.selectAll(".node")
-        .data(data.nodes)
-        .enter().append("circle")
-        .attr("class", "node")
-        .attr("r", 6)
-        .style("fill", function (d) {
-          return d.color;
-        })
-        .call(force.drag);
-      force.on("tick", function () {
-        link.attr("x1", function (d) {
-            return d.source.x;
-          })
-          .attr("y1", function (d) {
-            return d.source.y;
-          })
-          .attr("x2", function (d) {
-            return d.target.x;
-          })
-          .attr("y2", function (d) {
-            return d.target.y;
-          });
-
-        node.attr("cx", function (d) {
-            return d.x;
-          })
-          .attr("cy", function (d) {
-            return d.y;
-          });
+        labelAnchors.push({
+          node: node
+        }, {
+          node: node
+        });
       });
-    });
+
+      for (let i = 0; i < nodes.length; i++) {
+        labelAnchorLinks.push({
+          source: i * 2,
+          target: i * 2 + 1,
+          weight: 1
+        });
+      }
+      let force = d3.layout.force().charge(c).linkDistance(d).size([w, h]).nodes(nodes).links(links);
+      force.start();
+
+      let force2 = d3.layout.force().nodes(labelAnchors).links(labelAnchorLinks).gravity(0).linkDistance(0).linkStrength(8).charge(-100).size([w, h]);
+      force2.start();
+
+      let link = svg.selectAll("line.link").data(links).enter().append("svg:line").attr("class", "link").style("stroke", "#CCC");
+
+      let node = svg.selectAll("g.node").data(force.nodes()).enter().append("svg:g").attr("class", "node");
+      node.append("svg:circle").attr("r", 6).style("fill", function (d) {
+        return d.color;
+      });
+      node.call(force.drag);
+
+
+      let anchorLink = svg.selectAll("line.anchorLink").data(labelAnchorLinks);
+
+      let anchorNode = svg.selectAll("g.anchorNode").data(force2.nodes()).enter().append("g");
+      anchorNode.append("circle").attr("r", 0).attr("class", "anchorNode");
+      anchorNode.append("text").text(function (d, i) {
+        return i % 2 == 0 ? "" : d.node.label
+      });
+
+      let updateLink = function () {
+        this.attr("x1", function (d) {
+          return d.source.x;
+        }).attr("y1", function (d) {
+          return d.source.y;
+        }).attr("x2", function (d) {
+          return d.target.x;
+        }).attr("y2", function (d) {
+          return d.target.y;
+        });
+
+      };
+
+      let updateNode = function () {
+        this.attr("transform", function (d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        });
+
+      };
+
+
+      force.on("tick", function () {
+
+        force2.start();
+
+        node.call(updateNode);
+
+        anchorNode.each(function (d, i) {
+          if (i % 2 == 0) {
+            d.x = d.node.x;
+            d.y = d.node.y;
+          } else {
+            var b = this.childNodes[1].getBBox();
+
+            var diffX = d.x - d.node.x;
+            var diffY = d.y - d.node.y;
+
+            var dist = Math.sqrt(diffX * diffX + diffY * diffY);
+
+            var shiftX = b.width * (diffX - dist) / (dist * 2);
+            shiftX = Math.max(-b.width, Math.min(0, shiftX));
+            var shiftY = 5;
+            this.childNodes[1].setAttribute("transform", "translate(" + shiftX + "," + shiftY + ")");
+          }
+        });
+
+
+        anchorNode.call(updateNode);
+
+        link.call(updateLink);
+        anchorLink.call(updateLink);
+
+      });
+    })
   };
   return {
     restrict: "A",
