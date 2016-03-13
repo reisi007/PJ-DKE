@@ -4,15 +4,18 @@
     <script src="lib/angular.js"></script>
     <script src="lib/d3.js"></script>
     <script src="a-d3/angular-d3.js"></script>
+    <script src="js/test.js"></script>
     <script src="js/index.js"></script>
     <link rel="stylesheet" type="text/css" href="app.css">
     <meta charset="UTF-8">
     <title>Test</title>
 </head>
 <body ng-app="PjDke" ng-controller="TestController as tCtrl">
-<h1>AngularJS</h1>
-<<div width="960" height="500" charge="100" distance="100" d3-force="{{graphData}}">
 
-</div>
+<h1>Angular JS</h1>
+
+<div d3-force-label="{{graphData}}"></div>
+
+
 </body>
 </html>
