@@ -1,11 +1,16 @@
 package at.reisisoft.jku.pjdke.sqlimporter;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,9 +25,9 @@ public class Main {
     private static final String ZAHLUNG = "zahlung";
     private static final String JDBC_CONNECTION_STRING = "jdbc:mysql://localhost/pjdke?user=root&password=1234&useSSL=false";
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws Exception {
         log("Loading CSV");
-        Path dir = Paths.get("").toAbsolutePath();
+        final Path dir = Paths.get("").toAbsolutePath();
         final String[] filenames = {ÄNDERUNGSHISTORIE, BESTELLPOS, BESTELLUNG, KREDITOR, RECHNUNG, WARENEINGANG, ZAHLUNG};
         final Path p = dir.getParent().resolve("csv");
         Class.forName("com.mysql.jdbc.Driver");
@@ -172,6 +177,12 @@ public class Main {
         }
         preparedStatement.executeBatch();
         preparedStatement.close();
+        log("Create log");
+        Path pStep2Sql = dir.resolve("../helperQueries/step2.sql");
+        String step2Sql = IOUtils.toString(Files.newBufferedReader(pStep2Sql));
+        Statement statement = con.createStatement();
+        statement.execute("DROP TABLE IF EXISTS log");
+        statement.execute(step2Sql);
         con.commit();
         log("Done");
     }

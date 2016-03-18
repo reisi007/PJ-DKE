@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96fc097f-341d-466c-8e97-5f541bbf395a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/importer/at/reisisoft/jku/pjdke/sqlimporter/Main.class" afterPath="$PROJECT_DIR$/out/production/importer/at/reisisoft/jku/pjdke/sqlimporter/Main.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_commons_io_2_4.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../helperQueries/step1.sql" afterPath="$PROJECT_DIR$/../helperQueries/step1.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/importer.iml" afterPath="$PROJECT_DIR$/importer.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Main.java" afterPath="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Main.java" />
     </list>
     <ignored path="importer.iws" />
@@ -44,18 +45,19 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="39" column="30" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="30" />
+            <state relative-caret-position="403">
+              <caret line="181" column="35" selection-start-line="181" selection-start-column="35" selection-end-line="181" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1458301809513" expanded="true" signature="2144:2153" placeholder="truncate mis... " />
-                <marker date="1458301809513" expanded="true" signature="2335:2389" placeholder="INSERT INTO änderungshistorie... " />
-                <marker date="1458301809513" expanded="true" signature="2822:2873" placeholder="INSERT INTO bestellpos... " />
-                <marker date="1458301809513" expanded="true" signature="3551:3596" placeholder="INSERT INTO bestellung... " />
-                <marker date="1458301809513" expanded="true" signature="4275:4324" placeholder="INSERT INTO creditor... " />
-                <marker date="1458301809513" expanded="true" signature="5244:5289" placeholder="INSERT INTO rechnung... " />
-                <marker date="1458301809513" expanded="true" signature="5983:6032" placeholder="INSERT INTO wareneingang... " />
-                <marker date="1458301809513" expanded="true" signature="6725:6767" placeholder="INSERT INTO zahlung... " />
+                <marker date="1458308850728" expanded="true" signature="2264:2273" placeholder="truncate mis... " />
+                <marker date="1458308850728" expanded="true" signature="2455:2509" placeholder="INSERT INTO änderungshistorie... " />
+                <marker date="1458308850728" expanded="true" signature="2942:2993" placeholder="INSERT INTO bestellpos... " />
+                <marker date="1458308850728" expanded="true" signature="3671:3716" placeholder="INSERT INTO bestellung... " />
+                <marker date="1458308850728" expanded="true" signature="4395:4444" placeholder="INSERT INTO creditor... " />
+                <marker date="1458308850728" expanded="true" signature="5364:5409" placeholder="INSERT INTO rechnung... " />
+                <marker date="1458308850728" expanded="true" signature="6103:6152" placeholder="INSERT INTO wareneingang... " />
+                <marker date="1458308850728" expanded="true" signature="6845:6887" placeholder="INSERT INTO zahlung... " />
+                <marker date="1458308850728" expanded="true" signature="7748:7772" placeholder="DROP TABLE I... " />
               </folding>
             </state>
           </provider>
@@ -91,10 +93,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="370" />
-    <option name="y" value="40" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
-    <option name="height" value="933" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -121,6 +122,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -141,15 +144,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="true" />
-    <property name="Repository.Attach.Sources" value="false" />
+    <property name="Repository.Attach.Sources" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -465,14 +466,15 @@
       <workItem from="1458291618587" duration="687000" />
       <workItem from="1458293782886" duration="169000" />
       <workItem from="1458301702324" duration="520000" />
+      <workItem from="1458305634987" duration="1381000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5206000" />
+    <option name="totallyTimeSpent" value="6587000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="370" y="40" width="974" height="933" extended-state="0" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -530,14 +532,34 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1458301809513" expanded="true" signature="2144:2153" placeholder="truncate mis... " />
-            <marker date="1458301809513" expanded="true" signature="2335:2389" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458301809513" expanded="true" signature="2822:2873" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458301809513" expanded="true" signature="3551:3596" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458301809513" expanded="true" signature="4275:4324" placeholder="INSERT INTO creditor... " />
-            <marker date="1458301809513" expanded="true" signature="5244:5289" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458301809513" expanded="true" signature="5983:6032" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458301809513" expanded="true" signature="6725:6767" placeholder="INSERT INTO zahlung... " />
+            <marker date="1458308850728" expanded="true" signature="2264:2273" placeholder="truncate mis... " />
+            <marker date="1458308850728" expanded="true" signature="2455:2509" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1458308850728" expanded="true" signature="2942:2993" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1458308850728" expanded="true" signature="3671:3716" placeholder="INSERT INTO bestellung... " />
+            <marker date="1458308850728" expanded="true" signature="4395:4444" placeholder="INSERT INTO creditor... " />
+            <marker date="1458308850728" expanded="true" signature="5364:5409" placeholder="INSERT INTO rechnung... " />
+            <marker date="1458308850728" expanded="true" signature="6103:6152" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1458308850728" expanded="true" signature="6845:6887" placeholder="INSERT INTO zahlung... " />
+            <marker date="1458308850728" expanded="true" signature="7748:7772" placeholder="DROP TABLE I... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1458308850728" expanded="true" signature="2264:2273" placeholder="truncate mis... " />
+            <marker date="1458308850728" expanded="true" signature="2455:2509" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1458308850728" expanded="true" signature="2942:2993" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1458308850728" expanded="true" signature="3671:3716" placeholder="INSERT INTO bestellung... " />
+            <marker date="1458308850728" expanded="true" signature="4395:4444" placeholder="INSERT INTO creditor... " />
+            <marker date="1458308850728" expanded="true" signature="5364:5409" placeholder="INSERT INTO rechnung... " />
+            <marker date="1458308850728" expanded="true" signature="6103:6152" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1458308850728" expanded="true" signature="6845:6887" placeholder="INSERT INTO zahlung... " />
+            <marker date="1458308850728" expanded="true" signature="7748:7772" placeholder="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
@@ -552,18 +574,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="39" column="30" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="30" />
+        <state relative-caret-position="403">
+          <caret line="181" column="35" selection-start-line="181" selection-start-column="35" selection-end-line="181" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1458301809513" expanded="true" signature="2144:2153" placeholder="truncate mis... " />
-            <marker date="1458301809513" expanded="true" signature="2335:2389" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458301809513" expanded="true" signature="2822:2873" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458301809513" expanded="true" signature="3551:3596" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458301809513" expanded="true" signature="4275:4324" placeholder="INSERT INTO creditor... " />
-            <marker date="1458301809513" expanded="true" signature="5244:5289" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458301809513" expanded="true" signature="5983:6032" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458301809513" expanded="true" signature="6725:6767" placeholder="INSERT INTO zahlung... " />
+            <marker date="1458308850728" expanded="true" signature="2264:2273" placeholder="truncate mis... " />
+            <marker date="1458308850728" expanded="true" signature="2455:2509" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1458308850728" expanded="true" signature="2942:2993" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1458308850728" expanded="true" signature="3671:3716" placeholder="INSERT INTO bestellung... " />
+            <marker date="1458308850728" expanded="true" signature="4395:4444" placeholder="INSERT INTO creditor... " />
+            <marker date="1458308850728" expanded="true" signature="5364:5409" placeholder="INSERT INTO rechnung... " />
+            <marker date="1458308850728" expanded="true" signature="6103:6152" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1458308850728" expanded="true" signature="6845:6887" placeholder="INSERT INTO zahlung... " />
+            <marker date="1458308850728" expanded="true" signature="7748:7772" placeholder="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
@@ -597,6 +620,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>scala-sdk-2.11.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -633,7 +657,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>mysql:mysql-connector-java:5.1.38</last-edited>
+          <last-edited>commons-io:commons-io:2.4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

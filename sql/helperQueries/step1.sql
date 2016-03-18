@@ -55,8 +55,8 @@ SELECT
   b.bestellnr
 FROM (SELECT
         id                  AS 'kreditorId',
-        'Kreditor gesperrt' AS 'type',
-        aenderts            AS 'when'
+		 aenderts            AS 'when',
+        'Kreditor gesperrt' AS 'type'
       FROM Änderungshistorie
       WHERE tabelle = 'Kreditor' AND wertNeu = 'X') a JOIN bestellung b ON a.kreditorId = b.krednr;
 --Preis geändert
