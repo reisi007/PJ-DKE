@@ -1,5 +1,6 @@
 package at.reisisoft.jku.pjdke.sqlimporter;
 
+import at.reisisoft.jku.pjdke.sqlanalyzer.Analyze;
 import org.apache.commons.io.IOUtils;
 
 import java.io.BufferedReader;
@@ -14,7 +15,7 @@ import java.sql.Statement;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Main {
+public class Import {
 
     private static final String ÄNDERUNGSHISTORIE = "änderungshistorie";
     private static final String BESTELLUNG = "bestellung";
@@ -23,7 +24,9 @@ public class Main {
     private static final String RECHNUNG = "rechnung";
     private static final String WARENEINGANG = "wareneingang";
     private static final String ZAHLUNG = "zahlung";
-    private static final String JDBC_CONNECTION_STRING = "jdbc:mysql://localhost/pjdke?user=root&password=1234&useSSL=false";
+
+
+    public static final String JDBC_CONNECTION_STRING = "jdbc:mysql://localhost/pjdke?user=root&password=1234&useSSL=false";
 
     public static void main(String[] args) throws Exception {
         log("Loading CSV");
@@ -144,15 +147,12 @@ public class Main {
         rows = fileContent.get(WARENEINGANG);
         for (String[] line : rows) {
             for (int i = 0; i < line.length; i++) {
-                switch (i) {
-                    default:
-                        String tmp = line[i];
-                        if (tmp.isEmpty()) {
-                            tmp = null;
-                        }
-                        preparedStatement.setString(i + 1, tmp);
-                        break;
+                String tmp = line[i];
+                if (tmp.isEmpty()) {
+                    tmp = null;
                 }
+                preparedStatement.setString(i + 1, tmp);
+
             }
             preparedStatement.addBatch();
         }
@@ -163,15 +163,12 @@ public class Main {
         rows = fileContent.get(ZAHLUNG);
         for (String[] line : rows) {
             for (int i = 0; i < line.length; i++) {
-                switch (i) {
-                    default:
-                        String tmp = line[i];
-                        if (tmp.isEmpty()) {
-                            tmp = null;
-                        }
-                        preparedStatement.setString(i + 1, tmp);
-                        break;
+                String tmp = line[i];
+                if (tmp.isEmpty()) {
+                    tmp = null;
                 }
+                preparedStatement.setString(i + 1, tmp);
+
             }
             preparedStatement.addBatch();
         }
@@ -184,7 +181,8 @@ public class Main {
         statement.execute("DROP TABLE IF EXISTS log");
         statement.execute(step2Sql);
         con.commit();
-        log("Done");
+        log("Done syncing");
+        Analyze.main(args);
     }
 
     private static void log(Object o) {

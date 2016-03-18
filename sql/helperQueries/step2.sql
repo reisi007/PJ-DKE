@@ -2,7 +2,7 @@ CREATE TABLE log AS
   SELECT *
   FROM (SELECT *
         FROM (SELECT
-                h.id                    AS 'bestellnr',
+                b.bestellnr,
                 'Bestellmenge geändert' AS 'type',
                 h.aenderts              AS 'when'
               FROM Änderungshistorie h JOIN bestellung b ON h.id = b.bestellnr) bg
@@ -83,8 +83,12 @@ CREATE TABLE log AS
                  eingangsts         AS 'when'
                FROM wareneingang)
         UNION (SELECT
-                 id                     AS 'bestellnr',
+                 bp.bestellnr           AS 'bestellnr',
                  'Zahlung durchgeführt' AS 'type',
                  zahlts                 AS 'when'
-               FROM zahlung)) total
+               FROM zahlung z JOIN (SELECT
+                                      bestellnr,
+                                      concat(posnr,
+                                             bestellnr) AS 'joinId'
+                                    FROM bestellpos) bp ON bp.joinId = z.id)) total
   WHERE !isnull(total.bestellnr)
