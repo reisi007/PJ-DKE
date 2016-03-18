@@ -100,7 +100,8 @@ public class Main {
             for (int i = 0; i < line.length; i++) {
                 switch (i) {
                     case 0:
-                        preparedStatement.setLong(i + 1, Long.parseLong(line[i].substring(1)));
+                        int offset = Character.isDigit(line[i].charAt(0)) ? 0 : 1;
+                        preparedStatement.setLong(i + 1, Long.parseLong(line[i].substring(offset)));
                         break;
                     case 7:
                         preparedStatement.setBoolean(i + 1, !line[i].isEmpty());
