@@ -74,3 +74,4 @@ FROM (SELECT
                                                                       concat(posnr, bestellnr) AS 'joinId'
                                                                     FROM bestellpos) bp ON a.id = bp.joinId
   JOIN bestellung b ON b.bestellnr = bp.bestellnr;
+  
