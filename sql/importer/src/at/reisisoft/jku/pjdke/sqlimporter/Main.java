@@ -82,7 +82,7 @@ public class Main {
             for (int i = 0; i < line.length; i++) {
                 switch (i) {
                     case 2:
-                        preparedStatement.setBoolean(3, "x".equals(line[2]));
+                        preparedStatement.setBoolean(i + 1, !line[i].isEmpty());
                         break;
                     default:
                         preparedStatement.setString(i + 1, line[i]);
@@ -103,7 +103,7 @@ public class Main {
                         preparedStatement.setLong(i + 1, Long.parseLong(line[i].substring(1)));
                         break;
                     case 7:
-                        preparedStatement.setBoolean(i + 1, line[7].length() == 1);
+                        preparedStatement.setBoolean(i + 1, !line[i].isEmpty());
                         break;
                     default:
                         preparedStatement.setString(i + 1, line[i]);
