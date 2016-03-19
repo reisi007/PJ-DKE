@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96fc097f-341d-466c-8e97-5f541bbf395a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlcreator/JsonCreator.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java" afterPath="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java" />
     </list>
     <ignored path="importer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,54 +38,7 @@
     <favorites_list name="importer" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Import.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="32" column="56" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="56" />
-              <folding>
-                <marker date="1458318389513" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-                <marker date="1458318389513" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-                <marker date="1458318389513" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-                <marker date="1458318389513" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-                <marker date="1458318389513" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-                <marker date="1458318389513" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-                <marker date="1458318389513" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-                <marker date="1458318389513" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-                <marker date="1458318389513" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Analyze.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="55" column="78" selection-start-line="55" selection-start-column="64" selection-end-line="55" selection-end-column="78" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1458375625547" expanded="true" signature="765:782" placeholder="SELECT * FRO... log" />
-                <marker date="1458375625547" expanded="true" signature="1972:2002" placeholder="DROP TABLE I... " />
-                <marker date="1458375625547" expanded="true" signature="2144:2203" placeholder="INSERT INTO routeInfo" />
-                <marker date="1458375625547" expanded="true" signature="2561:2574" placeholder="DROP TABLE i... " />
-                <marker date="1458375625547" expanded="true" signature="2561:2593" placeholder="DROP TABLE i... " />
-                <marker date="1458375625547" expanded="true" signature="2625:2755" placeholder="CREATE TABLE... uniquePaths" />
-                <marker date="1458375625547" expanded="true" signature="2654:2755" placeholder="SELECT @n :=... routeinfo" />
-                <marker date="1458375625547" expanded="true" signature="2690:2732" placeholder="SELECT ihash... routeinfo" />
-                <marker date="1458375625547" expanded="true" signature="2739:2753" placeholder="SELECT @n :=... " />
-                <marker date="1458375625547" expanded="true" signature="2912:2932" placeholder="DROP TABLE i... " />
-                <marker date="1458375625547" expanded="true" signature="2912:2937" placeholder="DROP TABLE I... " />
-                <marker date="1458375625547" expanded="true" signature="3166:3182" placeholder="INSERT INTO flow... " />
-                <marker date="1458375625547" expanded="true" signature="3166:3250" placeholder="INSERT INTO flow... " />
-                <marker date="1458375625547" expanded="true" signature="5352:5382" placeholder="DROP TABLE I... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -112,7 +65,9 @@
         <option value="$PROJECT_DIR$/src/sqlanalyzer/Analyze.java" />
         <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/LogElement.java" />
         <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/LogElement.java" />
+        <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/JsonCreator.java" />
         <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java" />
+        <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlcreator/JsonCreator.java" />
       </list>
     </option>
   </component>
@@ -129,9 +84,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -158,8 +114,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -178,8 +132,54 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="importer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="importer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pjdke" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sqlimporter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="importer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="importer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pjdke" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sqlanalyzer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -199,23 +199,6 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.Analyze">
-    <configuration default="false" name="Import" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="at.reisisoft.jku.pjdke.sqlimporter.Import" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="importer" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="Analyze" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -224,9 +207,9 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="at.reisisoft.jku.pjdke.sqlanalyzer.Analyze" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -288,133 +271,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -429,15 +285,6 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="depsClasspath" value="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -503,9 +350,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -529,9 +373,6 @@
       <option name="workingDirectory" />
       <option name="isAlternativeJrePathEnabled" value="false" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
@@ -561,12 +402,6 @@
       <setting name="testName" value="" />
       <setting name="testKind" value="Class" />
       <setting name="showProgressMessages" value="true" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <envs />
       <method />
     </configuration>
@@ -626,41 +461,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
-      <method />
-    </configuration>
     <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -681,9 +481,8 @@
       <item index="1" class="java.lang.String" itemvalue="Application.Analyze" />
     </list>
     <recent_temporary>
-      <list size="2">
+      <list size="1">
         <item index="0" class="java.lang.String" itemvalue="Application.Analyze" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Import" />
       </list>
     </recent_temporary>
   </component>
@@ -714,41 +513,42 @@
       <workItem from="1458301702324" duration="520000" />
       <workItem from="1458305634987" duration="1381000" />
       <workItem from="1458316983188" duration="7002000" />
-      <workItem from="1458370622438" duration="4526000" />
+      <workItem from="1458370622438" duration="5258000" />
+      <workItem from="1458378140215" duration="17000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18115000" />
+    <option name="totallyTimeSpent" value="18864000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2113127" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28601253" sideWeight="0.4948148" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14270833" sideWeight="0.4948148" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20354906" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1796875" sideWeight="0.5051852" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3713981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3713981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20930232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -801,211 +601,19 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="32" column="56" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="56" />
-          <folding>
-            <marker date="1458318389513" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458318389513" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458318389513" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458318389513" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458318389513" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458318389513" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458318389513" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458318389513" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458318389513" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java">
+    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlcreator/JsonCreator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1458375625547" expanded="true" signature="765:782" placeholder="SELECT * FRO... log" />
-            <marker date="1458375625547" expanded="true" signature="1972:2002" placeholder="DROP TABLE I... " />
-            <marker date="1458375625547" expanded="true" signature="2144:2203" placeholder="INSERT INTO routeInfo" />
-            <marker date="1458375625547" expanded="true" signature="2561:2574" placeholder="DROP TABLE i... " />
-            <marker date="1458375625547" expanded="true" signature="2561:2593" placeholder="DROP TABLE i... " />
-            <marker date="1458375625547" expanded="true" signature="2625:2755" placeholder="CREATE TABLE... uniquePaths" />
-            <marker date="1458375625547" expanded="true" signature="2654:2755" placeholder="SELECT @n :=... routeinfo" />
-            <marker date="1458375625547" expanded="true" signature="2690:2732" placeholder="SELECT ihash... routeinfo" />
-            <marker date="1458375625547" expanded="true" signature="2739:2753" placeholder="SELECT @n :=... " />
-            <marker date="1458375625547" expanded="true" signature="2912:2932" placeholder="DROP TABLE i... " />
-            <marker date="1458375625547" expanded="true" signature="2912:2937" placeholder="DROP TABLE I... " />
-            <marker date="1458375625547" expanded="true" signature="3166:3182" placeholder="INSERT INTO flow... " />
-            <marker date="1458375625547" expanded="true" signature="3166:3250" placeholder="INSERT INTO flow... " />
-            <marker date="1458375625547" expanded="true" signature="5352:5382" placeholder="DROP TABLE I... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1458318389513" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458318389513" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458318389513" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458318389513" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458318389513" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458318389513" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458318389513" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458318389513" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458318389513" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1458318389513" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458318389513" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458318389513" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458318389513" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458318389513" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458318389513" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458318389513" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458318389513" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458318389513" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1458318389513" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458318389513" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458318389513" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458318389513" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458318389513" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458318389513" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458318389513" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458318389513" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458318389513" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="1912" column="18" selection-start-line="1912" selection-start-column="18" selection-end-line="1912" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/Date.java">
+    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlcreator/JsonCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/sql/Timestamp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-553">
-          <caret line="71" column="44" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+        <state relative-caret-position="119">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/AbstractSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="119" column="15" selection-start-line="119" selection-start-column="15" selection-end-line="119" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/TreeSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="91" column="39" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
-          <folding>
-            <element signature="e#5525#5526#0" expanded="true" />
-            <element signature="e#5572#5573#0" expanded="true" />
-            <element signature="e#7457#7458#0" expanded="true" />
-            <element signature="e#7512#7513#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/stream/Stream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="806" column="13" selection-start-line="806" selection-start-column="13" selection-end-line="806" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/AbstractMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="506" column="31" selection-start-line="506" selection-start-column="31" selection-end-line="506" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/LogElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1468#1469#0" expanded="true" />
-            <element signature="e#1495#1496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="32" column="56" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="56" />
-          <folding>
-            <marker date="1458318389513" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458318389513" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458318389513" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458318389513" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458318389513" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458318389513" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458318389513" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458318389513" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458318389513" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="55" column="78" selection-start-line="55" selection-start-column="64" selection-end-line="55" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1458375625547" expanded="true" signature="765:782" placeholder="SELECT * FRO... log" />
-            <marker date="1458375625547" expanded="true" signature="1972:2002" placeholder="DROP TABLE I... " />
-            <marker date="1458375625547" expanded="true" signature="2144:2203" placeholder="INSERT INTO routeInfo" />
-            <marker date="1458375625547" expanded="true" signature="2561:2574" placeholder="DROP TABLE i... " />
-            <marker date="1458375625547" expanded="true" signature="2561:2593" placeholder="DROP TABLE i... " />
-            <marker date="1458375625547" expanded="true" signature="2625:2755" placeholder="CREATE TABLE... uniquePaths" />
-            <marker date="1458375625547" expanded="true" signature="2654:2755" placeholder="SELECT @n :=... routeinfo" />
-            <marker date="1458375625547" expanded="true" signature="2690:2732" placeholder="SELECT ihash... routeinfo" />
-            <marker date="1458375625547" expanded="true" signature="2739:2753" placeholder="SELECT @n :=... " />
-            <marker date="1458375625547" expanded="true" signature="2912:2932" placeholder="DROP TABLE i... " />
-            <marker date="1458375625547" expanded="true" signature="2912:2937" placeholder="DROP TABLE I... " />
-            <marker date="1458375625547" expanded="true" signature="3166:3182" placeholder="INSERT INTO flow... " />
-            <marker date="1458375625547" expanded="true" signature="3166:3250" placeholder="INSERT INTO flow... " />
-            <marker date="1458375625547" expanded="true" signature="5352:5382" placeholder="DROP TABLE I... " />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -1,5 +1,6 @@
 package at.reisisoft.jku.pjdke.sqlanalyzer;
 
+import at.reisisoft.jku.pjdke.sqlcreator.JsonCreator;
 import at.reisisoft.jku.pjdke.sqlimporter.Import;
 import org.apache.commons.io.IOUtils;
 
@@ -108,6 +109,7 @@ public class Analyze {
         log("Done analyzing!");
         connection.commit();
         connection.close();
+        JsonCreator.main(args);
     }
 
     private static void log(Object o) {
