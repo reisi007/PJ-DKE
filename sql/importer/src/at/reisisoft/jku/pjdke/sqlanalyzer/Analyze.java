@@ -54,6 +54,57 @@ public class Analyze {
         //Select unique paths
         statement2.execute("DROP TABLE IF EXISTS uniquePaths");
         statement2.execute("CREATE TABLE  uniquePaths AS SELECT @n := @n + 1 n,  ihash FROM (SELECT ihash FROM routeinfo GROUP BY ihash) ri, (SELECT @n := 0)m");
+        log("Create flow");
+        String step3bSql = IOUtils.toString(Files.newBufferedReader(dir.resolve("step3b.sql")));
+        statement2.execute("DROP TABLE IF EXISTS flow");
+        statement2.execute(step3bSql);
+        //                                                                          1       2     3     4   5     6     7
+        PreparedStatement pstmt2 = connection.prepareStatement("INSERT INTO flow(bestellnr,prev,tsPrev,cur,tsCur,next,tsNext) VALUES (?,?,?,?,?,?,?)");
+        for (Long key : traces.keySet()) {
+            ArrayList<LogElement> value = new ArrayList<>(traces.get(key));
+            //First element
+            pstmt2.setLong(1, key);
+            pstmt2.setString(2, null);
+            pstmt2.setTimestamp(3, null);
+            pstmt2.setString(4, value.get(0).getType());
+            pstmt2.setTimestamp(5, value.get(0).getTimestamp());
+            if (value.size() == 1) {
+                pstmt2.setString(6, null);
+                pstmt2.setTimestamp(7, null);
+                pstmt2.execute();
+            } else {
+                pstmt2.setString(6, value.get(1).getType());
+                pstmt2.setTimestamp(7, value.get(1).getTimestamp());
+                pstmt2.addBatch();
+                //Last element
+                LogElement last = value.get(value.size() - 1), prev = value.get(value.size() - 2);
+                pstmt2.setLong(1, key);
+                pstmt2.setString(2, prev.getType());
+                pstmt2.setTimestamp(3, prev.getTimestamp());
+                pstmt2.setString(4, last.getType());
+                pstmt2.setTimestamp(5, last.getTimestamp());
+                pstmt2.setString(6, null);
+                pstmt2.setTimestamp(7, null);
+                pstmt2.addBatch();
+            }
+            //Elements in the middle
+            for (int i = 1; i < value.size() - 1; i++) {
+                LogElement prev = value.get(i - 1), cur = value.get(i), next = value.get(i + 1);
+                pstmt2.setLong(1, key);
+                pstmt2.setString(2, prev.getType());
+                pstmt2.setTimestamp(3, prev.getTimestamp());
+                pstmt2.setString(4, cur.getType());
+                pstmt2.setTimestamp(5, cur.getTimestamp());
+                pstmt2.setString(6, next.getType());
+                pstmt2.setTimestamp(7, next.getTimestamp());
+                pstmt2.addBatch();
+            }
+            pstmt2.executeBatch();
+        }
+        log("Prepare table GraphData");
+        String step3cSql = IOUtils.toString(Files.newBufferedReader(dir.resolve("step3c.sql")));
+        statement2.execute("DROP TABLE IF EXISTS graphData");
+        statement2.execute(step3cSql);
         log("Done analyzing!");
         connection.commit();
         connection.close();
@@ -62,19 +113,4 @@ public class Analyze {
     private static void log(Object o) {
         System.out.println(o);
     }
-
-   /* private static String getIDFromType(String type) {
-        switch (type) {
-            case "Bestellmenge geändert":
-                return "BMG";
-            case "Bestellposition erstellt":
-                return "BPG";
-            case "Bestellposition storniert":
-                return "BPS";
-            case "Bestellung erstellt":
-            default:
-                throw new IllegalArgumentException("Unsupported: " + type);
-        }
-
-}*/
 }
