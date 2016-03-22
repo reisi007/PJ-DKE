@@ -1,9 +1,9 @@
 package at.reisisoft.jku.pjdke.sqlanalyzer;
 
-import at.reisisoft.jku.pjdke.sqlcreator.JsonCreator;
 import at.reisisoft.jku.pjdke.sqlimporter.Import;
 import org.apache.commons.io.IOUtils;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,11 +38,9 @@ public class Analyze {
 
         //In Tabelle schreiben
         final Path dir = Paths.get("").toAbsolutePath().getParent().resolve("helperQueries");
-        Path step3SqlFile = dir.resolve("step3.sql");
-        String step3sql = IOUtils.toString(Files.newBufferedReader(step3SqlFile));
         final Statement statement2 = connection.createStatement();
         statement2.execute("DROP TABLE IF EXISTS routeInfo");
-        statement2.execute(step3sql);
+        statement2.execute(loadSqlfile(dir.resolve("step3.sql")));
         //Insert in route info
         final PreparedStatement pstmt = connection.prepareStatement("INSERT INTO  routeInfo(bestellnr,hash,ihash) VALUES (?,?,?)");
         for (Map.Entry<Long, String> kvp : bestellNrHashCodeSet.entrySet()) {
@@ -55,6 +53,8 @@ public class Analyze {
         //Select unique paths
         statement2.execute("DROP TABLE IF EXISTS uniquePaths");
         statement2.execute("CREATE TABLE  uniquePaths AS SELECT @n := @n + 1 n,  ihash FROM (SELECT ihash FROM routeinfo GROUP BY ihash) ri, (SELECT @n := 0)m");
+        statement2.execute("DROP TABLE IF EXISTS routeStat");
+        statement2.execute(loadSqlfile(dir.resolve("step3d.sql")));
         log("Create flow");
         String step3bSql = IOUtils.toString(Files.newBufferedReader(dir.resolve("step3b.sql")));
         statement2.execute("DROP TABLE IF EXISTS flow");
@@ -103,16 +103,18 @@ public class Analyze {
             pstmt2.executeBatch();
         }
         log("Prepare table GraphData");
-        String step3cSql = IOUtils.toString(Files.newBufferedReader(dir.resolve("step3c.sql")));
         statement2.execute("DROP TABLE IF EXISTS graphData");
-        statement2.execute(step3cSql);
+        statement2.execute(loadSqlfile(dir.resolve("step3c.sql")));
         log("Done analyzing!");
         connection.commit();
         connection.close();
-        JsonCreator.main(args);
     }
 
     private static void log(Object o) {
         System.out.println(o);
+    }
+
+    private static String loadSqlfile(Path p) throws IOException {
+        return IOUtils.toString(Files.newBufferedReader(p));
     }
 }

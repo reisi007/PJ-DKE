@@ -4,7 +4,10 @@ header('Content-Type: application/json');
 const user = 'root';
 const password = '1234';
 const connectUrl = 'mysql:host=localhost:3306;dbname=pjdke;charset=utf8mb4';
-$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '0';
+if (isset($_REQUEST['id']) && isset($_REQUEST['percentage'])) {
+    echo '{"error": -1}';
+    exit();
+}
 /**
  * @return \PDO
  */
@@ -28,40 +31,43 @@ function readFile($filename)
 /**
  * @param $connection \PDO
  * @param $sql string
+ * @param $explodedId array
  * @return array
  */
-function execute($connection, $sql)
+function executeWithId($connection, $sql, $explodedId)
 {
-    $stmt = $connection->query($sql);
-    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-}
-
-/**
- * @param $connection \PDO
- * @param $sql string
- * @param $id integer
- * @return array
- */
-function executeWithId($connection, $sql, $id)
-{
-    $exploded = explode(',', $id);
-    foreach ($exploded as $value) {
+    foreach ($explodedId as $value) {
         $value = $connection->quote($value);
     }
-    $id = implode(',', $exploded);
+    $id = implode(',', $explodedId);
     $sql = sprintf($sql, $id, $id);
     $stmt = $connection->query($sql);
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 }
 
-
+//Start 'main'
 $connection = getConenction();
+
+if (isset($_REQUEST['id']))
+    $id = $_REQUEST['id'];
+else {
+    $p = $_REQUEST['percentage'];
+    $sql = 'SELECT routeId FROM routestat WHERE coverage <= (:percentage / 100)';
+    $pstmt = $connection->prepare($sql);
+    $pstmt->bindParam(':percentage', $p);
+    $pstmt->execute();
+    $column = $pstmt->fetchAll(\PDO::FETCH_COLUMN, 0);
+    $id = implode(',', $column);
+}
+
+$exploded = explode(',', $id);
+
 $result = [];
 foreach (['nodes', 'links', 'nodestat', 'routestat'] as $name) {
     $sql = readFile("$name.sql");
-    $result[$name] = executeWithId($connection, $sql, $id);
+    $result[$name] = executeWithId($connection, $sql, $exploded);
 }
-
+$result['ids'] = $exploded;
 echo json_encode($result);
 $connection->commit();
 ?>
