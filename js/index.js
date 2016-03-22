@@ -11,22 +11,60 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     //TODO fill those
     $scope.boxplotData = [];
     $scope.barchartData = [];
-    api({variant: 0}).then(function onComplete(res) {
-        $scope.rawData = res;
-    }, function onError(res) {
-        console.log(JSON.stringify(res))
-    });
+    $scope.labeltype = 'Count';
 
     $scope.reset = function () {
-        //TODO
-        console.log("RESET");
-        const raw = $scope.rawData;
-        $scope.nodes = raw.nodes;
-        $scope.links = raw.links;
+        location.reload();
+    };
+    let oldVariant = null, oldPercentage = null;
+    $scope.update = function () {
+        console.log('Update (nocheck)');
+        if (!$scope.rawData) return;
+        let performUpdate = function (rawData) {
+            //TODO
+            const labelType = $scope.labeltype;
+        };
+        let variant = $scope.variant;
+        if (variant) {
+            if (variant !== oldVariant) {
+                oldVariant = variant;
+                oldPercentage = null;
+                api.widthIds(variant, performUpdate);
+            }
+        } else {
+            let percentage = $scope.minCoverage;
+            if (percentage !== oldPercentage) {
+                oldVariant = null;
+                oldPercentage = percentage;
+                api.withPerc(percentage, performUpdate)
+            }
+        }
+        performUpdate($scope.rawData);
+    };
+    $scope.switchLabelState = function (type) {
+        let value = null;
+        if (type === 'T') {
+            value = $scope.optTime;
+        } else if (type === 'C') {
+            value = $scope.optCount;
+        }
+        if (value === null)return;
+        console.log(value);
+    };
+    $scope.$watch('rawData', watchUpdate);
+    $scope.$watch('labeltype', watchUpdate);
+    $scope.$watch('minCoverage', watchUpdate);
+
+    $scope.update();
+
+    function watchUpdate(newV, oldV) {
+        $scope.update();
     }
 }]);
+
+
 app.factory('api', ['$http', function ($http) {
-    return function (data) {
+    function call(data) {
         let url = 'data.php';
         return $http({
             method: 'POST',
@@ -39,9 +77,29 @@ app.factory('api', ['$http', function ($http) {
                 return str.join("&");
             },
             data: data
-        }).then(function (res) {
-            console.log('Respnse');
-            console.log(res.data);
+        })
+    }
+
+    let percentage = function (percentage, onSuccess) {
+        call({percentage: percentage}).then(function (res) {
+            console.log('Response');
+            console.log(res);
+            onSuccess(res);
+        }, function (res) {
+            console.log('Error: ' + JSON.stringify(res));
+        })
+    };
+    let withIds = function (idString, onSuccess) {
+        call({id: idString}).then(function (res) {
+            console.log('Response');
+            console.log(res);
+            onSuccess(res);
+        }, function (res) {
+            console.log('Error: ' + JSON.stringify(res));
         });
     };
+    return {
+        withPerc: percentage,
+        widthIds: withIds
+    }
 }]);

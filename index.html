@@ -37,14 +37,29 @@
                 <!-- Numeric Textfield -->
                 <div class="mdl-textfield mdl-js-textfield">
                     <input ng-model="variant" class="mdl-textfield__input" type="text"
-                           pattern="[0-9]*(\.[0-9]+)?"
+                           pattern="[0-9]+(,[0-9]+)*"
                            id="varId">
                     <label class="mdl-textfield__label" for="varId">Variant number:</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
-                <d3-boxplot d3-data="{{boxplotData}}"></d3-boxplot>
-                <d3-bar d3-data="{{boxplotData}}"></d3-bar>
+                <div class="flexbox">
+                    <form action="">
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="optCnt">
+                            <input type="radio" ng-model="labeltype" id="optCnt" class="mdl-radio__button"
+                                   name="options" value="Count" checked>
+                            <span class="mdl-radio__label">Count</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="optTime">
+                            <input type="radio" id="optTime" class="mdl-radio__button" name="options"
+                                   ng-model="labeltype" value="Time">
+                            <span class="mdl-radio__label">Duration</span>
+                        </label>
+                    </form>
+                </div>
             </div>
+            <d3-boxplot d3-data="{{boxplotData}}"></d3-boxplot>
+            <d3-bar d3-data="{{boxplotData}}"></d3-bar>
+
 
         </div>
         <!-- Colored FAB button with ripple -->
