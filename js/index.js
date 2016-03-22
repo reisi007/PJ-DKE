@@ -41,16 +41,7 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
         }
         performUpdate($scope.rawData);
     };
-    $scope.switchLabelState = function (type) {
-        let value = null;
-        if (type === 'T') {
-            value = $scope.optTime;
-        } else if (type === 'C') {
-            value = $scope.optCount;
-        }
-        if (value === null)return;
-        console.log(value);
-    };
+
     $scope.$watch('rawData', watchUpdate);
     $scope.$watch('labeltype', watchUpdate);
     $scope.$watch('minCoverage', watchUpdate);
