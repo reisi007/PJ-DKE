@@ -6,8 +6,7 @@
 let app = angular.module('PjDke', ['D3js']);
 app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     $scope.rawData = undefined;
-    $scope.nodes = [];
-    $scope.links = [];
+    $scope.graphData = [];
     //TODO fill those
     $scope.boxplotData = [];
     $scope.barchartData = [];
@@ -16,13 +15,21 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     $scope.reset = function () {
         location.reload();
     };
-    let oldVariant = null, oldPercentage = null;
+    let oldVariant = null, oldPercentage = null, oldLabel = null;
     $scope.update = function () {
-        console.log('Update (nocheck)');
-        if (!$scope.rawData) return;
         let performUpdate = function (rawData) {
-            //TODO
             const labelType = $scope.labeltype;
+            if (labelType === undefined || rawData === undefined) return;
+            $scope.graphData = {
+                nodes: rawData.nodes,
+                links: rawData.links,
+                labelType: labelType
+            };
+            $scope.barchartData = rawData.nodestat;
+            $scope.boxplotData = {
+                selectedIds: rawData.ids,
+                routestats: rawData.routestats
+            }
         };
         let variant = $scope.variant;
         if (variant) {
@@ -33,16 +40,21 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
             }
         } else {
             let percentage = $scope.minCoverage;
-            if (percentage !== oldPercentage) {
+            if (percentage !== undefined && percentage !== oldPercentage) {
                 oldVariant = null;
                 oldPercentage = percentage;
                 api.withPerc(percentage, performUpdate)
             }
         }
-        performUpdate($scope.rawData);
+        let labelType = $scope.labeltype;
+        if (labelType !== oldLabel) {
+            performUpdate($scope.rawData);
+            oldLabel = labelType;
+        }
     };
 
     $scope.$watch('rawData', watchUpdate);
+    $scope.$watch('variant', watchUpdate);
     $scope.$watch('labeltype', watchUpdate);
     $scope.$watch('minCoverage', watchUpdate);
 
@@ -72,21 +84,18 @@ app.factory('api', ['$http', function ($http) {
     }
 
     let percentage = function (percentage, onSuccess) {
-        call({percentage: percentage}).then(function (res) {
-            console.log('Response');
-            console.log(res);
-            onSuccess(res);
+        call({percentage: percentage}).then(function onSucc(res) {
+            onSuccess(res.data);
         }, function (res) {
             console.log('Error: ' + JSON.stringify(res));
         })
     };
     let withIds = function (idString, onSuccess) {
-        call({id: idString}).then(function (res) {
-            console.log('Response');
+        call({id: idString}).then(function onSuc(res) {
+            onSuccess(res.data);
+        }, function onErr(res) {
+            console.log('Error: ');
             console.log(res);
-            onSuccess(res);
-        }, function (res) {
-            console.log('Error: ' + JSON.stringify(res));
         });
     };
     return {

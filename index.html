@@ -24,11 +24,10 @@
     </header>
     <main class="mdl-layout__content" ng-cloak>
         <div class="page-content">
-            <div><p>Nodes: {{nodes.length}}<br>
-                Links: {{links.length}}</p>
+            <div><p>Nodes: {{graphData.nodes.length}}<br>
+                Links: {{graphData.links.length}}</p>
             </div>
-            <d3-force width="300" height="300" charge="100" distance="50" d3-nodes="{{nodes}}"
-                      d3-links="{{links}}"></d3-force>
+            <d3-force width="300" height="300" charge="100" distance="50" d3-data="{{graphData}}"></d3-force>
             <div>
                 Minimum coverage of graph: {{minCoverage}} %
                 <!-- Slider with Starting Value -->
@@ -58,9 +57,7 @@
                 </div>
             </div>
             <d3-boxplot d3-data="{{boxplotData}}"></d3-boxplot>
-            <d3-bar d3-data="{{boxplotData}}"></d3-bar>
-
-
+            <d3-bar d3-data="{{barchartData}}"></d3-bar>
         </div>
         <!-- Colored FAB button with ripple -->
         <button ng-click="reset()"

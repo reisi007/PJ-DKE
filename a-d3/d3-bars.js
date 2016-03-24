@@ -14,6 +14,8 @@ ad3.directive('d3Bar', ['svgTag', function (svgTag) {
             console.log(e);
             return;
         }
+        /* console.log('Data-Bar');
+         console.log(data);*/
         svgTag(elem, w, h).then(function (uniqueId) {
             let svg = d3.select('#' + uniqueId);
             //TODO d3 stuff
@@ -47,6 +49,8 @@ ad3.directive('d3Boxplot', ['svgTag', function (svgTag) {
             console.log(e);
             return;
         }
+        /*console.log('Data-BoxPlot');
+         console.log(data);*/
         svgTag(elem, w, h).then(function (uniqueId) {
             let svg = d3.select('#' + uniqueId);
             //TODO d3 stuff

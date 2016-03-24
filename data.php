@@ -52,14 +52,16 @@ if (isset($_REQUEST['id']))
     $id = $_REQUEST['id'];
 else {
     $p = $_REQUEST['percentage'];
-    $sql = 'SELECT routeId FROM routestat WHERE coverage <= (:percentage / 100)';
+    $sql = 'SELECT routeId FROM routestat WHERE coverage <= (SELECT min(coverage) AS minCov FROM routestat WHERE coverage >= :percentage/100)';
     $pstmt = $connection->prepare($sql);
     $pstmt->bindParam(':percentage', $p);
     $pstmt->execute();
     $column = $pstmt->fetchAll(\PDO::FETCH_COLUMN, 0);
+    if (empty($column)) {
+
+    }
     $id = implode(',', $column);
 }
-
 $exploded = explode(',', $id);
 
 $result = [];
