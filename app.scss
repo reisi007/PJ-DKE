@@ -40,3 +40,15 @@ svg {
     max-width: 450px;
   }
 }
+
+d3-bar div {
+  width: 400px;
+  text-align: left;
+  .bar {
+    background-color: #c5d4ff;
+    padding: 3px;
+    margin: 1px;
+    color: black;
+    white-space: nowrap;
+  }
+}

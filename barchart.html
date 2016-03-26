@@ -1,0 +1,3 @@
+<div ng-init="max = data[0].cnt" ng-repeat="cur in data" width="400px">
+    <div class="bar" ng-style="{'width':(cur.cnt/max*100)+'%'}">{{cur.type}} ({{cur.cnt}})</div>
+</div>

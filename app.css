@@ -6,9 +6,12 @@ svg .link {
   stroke-width: 1.5px;
   fill: none; }
 
+.flexbox {
+  display: flex;
+  align-content: space-between; }
+
 .mdl-layout__header-row {
-  padding-left: 16px;
-}
+  padding-left: 16px; }
 
 .mdl-button--floating-action {
   position: absolute;
@@ -16,8 +19,7 @@ svg .link {
   bottom: 24px;
   padding-top: 24px;
   margin-bottom: 0;
-  z-index: 998;
-}
+  z-index: 998; }
 
 .page-content {
   display: flex;
@@ -25,11 +27,18 @@ svg .link {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
-}
+  text-align: center; }
+  .page-content div, .page-content d3-bar, .page-content d3-boxplot, .page-content d3-force {
+    max-width: 450px; }
 
-.page-content div, .page-content d3-bar, .page-content d3-boxplot, .page-content d3-force {
-  max-width: 450px;
-}
+d3-bar div {
+  width: 400px;
+  text-align: left; }
+  d3-bar div .bar {
+    background-color: #c5d4ff;
+    padding: 3px;
+    margin: 1px;
+    color: black;
+    white-space: nowrap; }
 
 /*# sourceMappingURL=app.css.map */
