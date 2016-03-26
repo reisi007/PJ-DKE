@@ -54,7 +54,9 @@ public class Analyze {
         statement2.execute("DROP TABLE IF EXISTS uniquePaths");
         statement2.execute("CREATE TABLE  uniquePaths AS SELECT @n := @n + 1 n,  ihash FROM (SELECT ihash FROM routeinfo GROUP BY ihash) ri, (SELECT @n := 0)m");
         statement2.execute("DROP TABLE IF EXISTS routeStat");
+        statement2.execute("DROP TABLE IF EXISTS naccRouteStats");
         statement2.execute(loadSqlfile(dir.resolve("step3d.sql")));
+        statement2.execute(loadSqlfile(dir.resolve("step3e.sql")));
         log("Create flow");
         String step3bSql = IOUtils.toString(Files.newBufferedReader(dir.resolve("step3b.sql")));
         statement2.execute("DROP TABLE IF EXISTS flow");

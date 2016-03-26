@@ -6,10 +6,6 @@ svg .link {
   stroke-width: 1.5px;
   fill: none; }
 
-.flexbox {
-  display: flex;
-  align-content: space-between; }
-
 .mdl-layout__header-row {
   padding-left: 16px; }
 
@@ -23,16 +19,22 @@ svg .link {
 
 .page-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center; }
-  .page-content div, .page-content d3-bar, .page-content d3-boxplot, .page-content d3-force {
-    max-width: 450px; }
+  align-content: space-around;
+  height: auto;
+  margin-top: 10px;
+}
+
+.page-content div.limit {
+  max-width: 300px;
+}
+
+.page-content .item {
+  padding: 4px;
+}
 
 d3-bar div {
-  width: 400px;
   text-align: left; }
   d3-bar div .bar {
     background-color: #c5d4ff;
@@ -40,5 +42,33 @@ d3-bar div {
     margin: 1px;
     color: black;
     white-space: nowrap; }
+
+d3-range {
+  font-size: 0.8em;
+  width: 175px;
+}
+
+d3-range div.chart {
+  width: 165px;
+  display: block;
+}
+
+d3-range div.chart div {
+  height: 8px;
+}
+
+d3-range div.chart div.active {
+  background-color: #0eff03;
+  color: black;
+}
+
+d3-range div.chart div.inactive {
+  background-color: #4c7d47;
+  color: white;
+}
+
+d3-range, d3-bar, d3-force {
+  max-width: 350px;
+}
 
 /*# sourceMappingURL=app.css.map */

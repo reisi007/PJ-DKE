@@ -24,40 +24,43 @@
     </header>
     <main class="mdl-layout__content" ng-cloak>
         <div class="page-content">
-            <div><p>Nodes: {{graphData.nodes.length}}<br>
-                Links: {{graphData.links.length}}</p>
-            </div>
-            <d3-force width="300" height="300" charge="100" distance="50" d3-data="{{graphData}}"></d3-force>
+            <d3-force class="item" width="300" height="300" charge="100" distance="50"
+                      d3-data="{{graphData}}"></d3-force>
             <div>
-                Minimum coverage of graph: {{minCoverage}} %
-                <!-- Slider with Starting Value -->
-                <input ng-model="minCoverage" class="mdl-slider mdl-js-slider" type="range"
-                       step="0.1" min="0" max="100" ng-init="minCoverage = 100" tabindex="0">
-                <!-- Numeric Textfield -->
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input ng-model="variant" class="mdl-textfield__input" type="text"
-                           pattern="[0-9]+(,[0-9]+)*"
-                           id="varId">
-                    <label class="mdl-textfield__label" for="varId">Variant number:</label>
-                    <span class="mdl-textfield__error">Input is not a number!</span>
-                </div>
-                <div class="flexbox">
-                    <form action="">
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="optCnt">
-                            <input type="radio" ng-model="labeltype" id="optCnt" class="mdl-radio__button"
-                                   name="options" value="Count" checked>
-                            <span class="mdl-radio__label">Count</span>
-                        </label>
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="optTime">
-                            <input type="radio" id="optTime" class="mdl-radio__button" name="options"
-                                   ng-model="labeltype" value="Time">
-                            <span class="mdl-radio__label">Duration</span>
-                        </label>
-                    </form>
+                <div class="limit item"><p>Nodes: {{graphData.nodes.length}}<br>
+                    Links: {{graphData.links.length}}</p></div>
+                <div class="limit item">
+                    Minimum coverage of graph: {{minCoverage}} %
+                    <!-- Slider with Starting Value -->
+                    <input ng-model="minCoverage" class="mdl-slider mdl-js-slider" type="range"
+                           step="0.1" min="0" max="100" ng-init="minCoverage = 100" tabindex="0">
+                    <!-- Numeric Textfield -->
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input ng-model="variant" class="mdl-textfield__input" type="text"
+                               pattern="[0-9]+(,[0-9]+)*"
+                               id="varId">
+                        <label class="mdl-textfield__label" for="varId">Variant number:</label>
+                        <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+                    <div class="flexbox">
+                        <form action="">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="optCnt">
+                                <input type="radio" ng-model="labeltype" id="optCnt" class="mdl-radio__button"
+                                       name="options" value="Count" checked>
+                                <span class="mdl-radio__label">Count</span>
+                            </label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="optTime">
+                                <input type="radio" id="optTime" class="mdl-radio__button" name="options"
+                                       ng-model="labeltype" value="Time">
+                                <span class="mdl-radio__label">Duration</span>
+                            </label>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <d3-boxplot d3-data="{{boxplotData}}"></d3-boxplot>
-            <d3-bar d3-data="barchartData"></d3-bar>
+            <d3-range class="item" d3-data="boxplotData"></d3-range>
+            <d3-bar class="item" d3-data="barchartData"></d3-bar>
+
         </div>
     </main>
     <!-- Colored FAB button with ripple -->

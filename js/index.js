@@ -7,7 +7,6 @@ let app = angular.module('PjDke', ['D3js']);
 app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     $scope.rawData = undefined;
     $scope.graphData = [];
-    //TODO fill those
     $scope.boxplotData = [];
     $scope.barchartData = [];
     $scope.labeltype = 'Count';
@@ -28,7 +27,7 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
             $scope.barchartData = rawData.nodestat;
             $scope.boxplotData = {
                 selectedIds: rawData.ids,
-                routestats: rawData.routestats
+                routestats: rawData.routestat
             }
         };
         let variant = $scope.variant;

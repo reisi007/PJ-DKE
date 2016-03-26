@@ -11,38 +11,23 @@ ad3.directive('d3Bar', ['divTag', function (divTag) {
         }
     }
 }]);
-ad3.directive('d3Boxplot', ['svgTag', function (svgTag) {
-    let createDiagram = function ($scope, elem, attrs) {
-        const defaultW = 200;
-        const defaultH = 200;
-        let w = $scope.width = (attrs.width === undefined) ? defaultW : attrs.width;
-        let h = $scope.height = (attrs.height === undefined) ? defaultW : attrs.height;
-        let data = attrs.d3Data;
-        try {
-            data = JSON.parse(data);
-        } catch (e) {
-            console.log(e);
-            return;
-        }
-        /*console.log('Data-BoxPlot');
-         console.log(data);*/
-        svgTag(elem, w, h).then(function (uniqueId) {
-            let svg = d3.select('#' + uniqueId);
-            //TODO d3 stuff
-        });
-    };
+ad3.directive('d3Range', ['svgTag', function (svgTag) {
     return {
-        restrict: "E",
-        link: function ($scope, elem, attrs) {
-            attrs.$observe('d3Data', function () {
-                createDiagram($scope, elem, attrs);
-            });
-            attrs.$observe('width', function () {
-                createDiagram($scope, elem, attrs);
-            });
-            attrs.$observe('height', function () {
-                createDiagram($scope, elem, attrs);
-            });
+        restrict: 'E',
+        templateUrl: 'rangeChart.html',
+        scope: {
+            data: '=d3Data'
         }
+    }
+}]);
+ad3.controller('RangeController', ['$scope', function ($scope) {
+    $scope.$watch('data', function (o, n) {
+        console.log(n);
+    });
+    $scope.getActiveClass = function (routeId) {
+        return ($scope.data.selectedIds.indexOf(routeId) == -1 ? 'in' : '') + 'active';
+    };
+    $scope.getWidth = function (base) {
+        return Math.sqrt(base * 50000) + 'px';
     }
 }]);

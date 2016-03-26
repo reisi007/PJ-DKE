@@ -18,8 +18,8 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
             return;
         }
 
-        const defaultW = 960;
-        const defaultH = 500;
+        const defaultW = 200;
+        const defaultH = 200;
         const defaultCharge = 200;
         const defaultLinkDist = 40;
         let w = $scope.width = (attrs.width === undefined) ? defaultW : attrs.width;

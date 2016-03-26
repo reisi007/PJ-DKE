@@ -1,0 +1,8 @@
+<div class="chart" ng-controller="RangeController as rCtrl">
+    <div ng-repeat="cur in data.routestats track by cur.routeId">
+        <div class="mdl-tooltip mdl-tooltip--right center" for="d3Range{{cur.routeId}}">{{cur.routeId}}</div>
+        <div id="d3Range{{cur.routeId}}" ng-style="{'width':getWidth(cur.coverage)}"
+             ng-class="getActiveClass(cur.routeId)">
+        </div>
+    </div>
+</div>

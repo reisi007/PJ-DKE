@@ -1,4 +1,4 @@
 SELECT
   routeId,
   coverage
-FROM routestat;
+FROM naccRouteStats;
