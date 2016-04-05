@@ -2,7 +2,7 @@
  * Created by Florian on 19.03.2016.
  */
 
-ad3.directive('d3Bar', ['divTag', function (divTag) {
+ad3.directive('d3Bar', [function () {
     return {
         restrict: 'E',
         templateUrl: 'barchart.html',
@@ -11,7 +11,7 @@ ad3.directive('d3Bar', ['divTag', function (divTag) {
         }
     }
 }]);
-ad3.directive('d3Range', ['svgTag', function (svgTag) {
+ad3.directive('d3Range', [function () {
     return {
         restrict: 'E',
         templateUrl: 'rangeChart.html',
