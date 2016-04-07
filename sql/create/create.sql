@@ -1,4 +1,5 @@
-﻿CREATE TABLE pjdke.änderungshistorie
+﻿CREATE DATABASE IF NOT EXISTS pjdke;
+CREATE TABLE IF NOT EXISTS pjdke.änderungshistorie
 (
   aendernr  INT UNSIGNED PRIMARY KEY,
   tabelle   TEXT,
@@ -9,7 +10,7 @@
   aenderts  TIMESTAMP,
   aenderusr VARCHAR(16)
 );
-CREATE TABLE pjdke.bestellpos
+CREATE TABLE IF NOT EXISTS pjdke.bestellpos
 (
   posnr         INT UNSIGNED,
   bestellnr     BIGINT UNSIGNED,
@@ -23,7 +24,7 @@ CREATE TABLE pjdke.bestellpos
   erstellusr    VARCHAR(16),
   CONSTRAINT bestellpos_posnr_bestellnr_pk PRIMARY KEY (posnr, bestellnr)
 );
-CREATE TABLE pjdke.creditor
+CREATE TABLE IF NOT EXISTS pjdke.creditor
 (
   kredNr    BIGINT UNSIGNED PRIMARY KEY,
   vname     TEXT,
@@ -36,7 +37,7 @@ CREATE TABLE pjdke.creditor
   erstellus VARCHAR(16),
   erstellt  TIMESTAMP
 );
-CREATE TABLE pjdke.rechnung
+CREATE TABLE IF NOT EXISTS pjdke.rechnung
 (
   rechnungsnr    BIGINT UNSIGNED PRIMARY KEY,
   positionsnr    INT UNSIGNED,
@@ -47,7 +48,7 @@ CREATE TABLE pjdke.rechnung
   währung        VARCHAR(3),
   kreditnr       BIGINT UNSIGNED
 );
-CREATE TABLE pjdke.bestellung
+CREATE TABLE IF NOT EXISTS pjdke.bestellung
 (
   bestellnr   BIGINT UNSIGNED PRIMARY KEY,
   krednr      BIGINT UNSIGNED,
@@ -57,7 +58,7 @@ CREATE TABLE pjdke.bestellung
   freigabets  TIMESTAMP,
   freigabeusr VARCHAR(16)
 );
-CREATE TABLE pjdke.wareneingang
+CREATE TABLE IF NOT EXISTS pjdke.wareneingang
 (
   id            BIGINT UNSIGNED PRIMARY KEY,
   posnr         INT UNSIGNED,
@@ -68,7 +69,7 @@ CREATE TABLE pjdke.wareneingang
   eingangsurs   VARCHAR(16),
   krednr        BIGINT UNSIGNED
 );
-CREATE TABLE pjdke.zahlung
+CREATE TABLE IF NOT EXISTS pjdke.zahlung
 (
   id          BIGINT UNSIGNED PRIMARY KEY,
   rechnungsnr BIGINT UNSIGNED,

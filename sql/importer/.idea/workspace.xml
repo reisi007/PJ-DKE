@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="96fc097f-341d-466c-8e97-5f541bbf395a" name="Default" comment="" />
+    <list default="true" id="96fc097f-341d-466c-8e97-5f541bbf395a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java" afterPath="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java" />
+    </list>
     <ignored path="importer.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,30 +39,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Import.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Import.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="578">
+              <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
               <folding>
-                <marker date="1458380763040" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-                <marker date="1458380763040" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-                <marker date="1458380763040" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-                <marker date="1458380763040" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-                <marker date="1458380763040" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-                <marker date="1458380763040" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-                <marker date="1458380763040" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-                <marker date="1458380763040" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-                <marker date="1458380763040" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
+                <marker date="1460018867951" expanded="true" signature="2440:2449" placeholder="truncate mis... " />
+                <marker date="1460018867951" expanded="true" signature="2631:2685" placeholder="INSERT INTO änderungshistorie... " />
+                <marker date="1460018867951" expanded="true" signature="3118:3169" placeholder="INSERT INTO bestellpos... " />
+                <marker date="1460018867951" expanded="true" signature="3847:3892" placeholder="INSERT INTO bestellung... " />
+                <marker date="1460018867951" expanded="true" signature="4571:4620" placeholder="INSERT INTO creditor... " />
+                <marker date="1460018867951" expanded="true" signature="5540:5585" placeholder="INSERT INTO rechnung... " />
+                <marker date="1460018867951" expanded="true" signature="6279:6328" placeholder="INSERT INTO wareneingang... " />
+                <marker date="1460018867951" expanded="true" signature="6875:6917" placeholder="INSERT INTO zahlung... " />
+                <marker date="1460018867951" expanded="true" signature="7632:7656" placeholder="DROP TABLE I... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Analyze.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Analyze.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
+            <state relative-caret-position="816">
               <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -102,7 +105,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Main.java" />
-        <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java" />
         <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Analyze.java" />
         <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java" />
         <option value="$PROJECT_DIR$/src/sqlanalyzer/Analyze.java" />
@@ -111,6 +113,7 @@
         <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/JsonCreator.java" />
         <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlcreator/JsonCreator.java" />
         <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java" />
+        <option value="$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java" />
       </list>
     </option>
   </component>
@@ -127,9 +130,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -158,6 +162,7 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -222,7 +227,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -564,40 +568,41 @@
       <workItem from="1459495758913" duration="39000" />
       <workItem from="1459495860540" duration="25000" />
       <workItem from="1459750000794" duration="30000" />
+      <workItem from="1460018609866" duration="312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21655000" />
+    <option name="totallyTimeSpent" value="21967000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20718816" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19624217" sideWeight="0.4948148" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09791667" sideWeight="0.4948148" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20354906" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1796875" sideWeight="0.5051852" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3713981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3713981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20917822" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3329776" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -655,15 +660,15 @@
         <state relative-caret-position="68">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
-            <marker date="1458380763040" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458380763040" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458380763040" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458380763040" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458380763040" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458380763040" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458380763040" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458380763040" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458380763040" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
+            <marker date="1460018867951" expanded="true" signature="2440:2449" placeholder="truncate mis... " />
+            <marker date="1460018867951" expanded="true" signature="2631:2685" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1460018867951" expanded="true" signature="3118:3169" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1460018867951" expanded="true" signature="3847:3892" placeholder="INSERT INTO bestellung... " />
+            <marker date="1460018867951" expanded="true" signature="4571:4620" placeholder="INSERT INTO creditor... " />
+            <marker date="1460018867951" expanded="true" signature="5540:5585" placeholder="INSERT INTO rechnung... " />
+            <marker date="1460018867951" expanded="true" signature="6279:6328" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1460018867951" expanded="true" signature="6875:6917" placeholder="INSERT INTO zahlung... " />
+            <marker date="1460018867951" expanded="true" signature="7632:7656" placeholder="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
@@ -696,15 +701,15 @@
         <state relative-caret-position="68">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
-            <marker date="1458380763040" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458380763040" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458380763040" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458380763040" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458380763040" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458380763040" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458380763040" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458380763040" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458380763040" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
+            <marker date="1460018867951" expanded="true" signature="2440:2449" placeholder="truncate mis... " />
+            <marker date="1460018867951" expanded="true" signature="2631:2685" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1460018867951" expanded="true" signature="3118:3169" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1460018867951" expanded="true" signature="3847:3892" placeholder="INSERT INTO bestellung... " />
+            <marker date="1460018867951" expanded="true" signature="4571:4620" placeholder="INSERT INTO creditor... " />
+            <marker date="1460018867951" expanded="true" signature="5540:5585" placeholder="INSERT INTO rechnung... " />
+            <marker date="1460018867951" expanded="true" signature="6279:6328" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1460018867951" expanded="true" signature="6875:6917" placeholder="INSERT INTO zahlung... " />
+            <marker date="1460018867951" expanded="true" signature="7632:7656" placeholder="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
@@ -737,15 +742,15 @@
         <state relative-caret-position="68">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
-            <marker date="1458380763040" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458380763040" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458380763040" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458380763040" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458380763040" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458380763040" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458380763040" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458380763040" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458380763040" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
+            <marker date="1460018867951" expanded="true" signature="2440:2449" placeholder="truncate mis... " />
+            <marker date="1460018867951" expanded="true" signature="2631:2685" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1460018867951" expanded="true" signature="3118:3169" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1460018867951" expanded="true" signature="3847:3892" placeholder="INSERT INTO bestellung... " />
+            <marker date="1460018867951" expanded="true" signature="4571:4620" placeholder="INSERT INTO creditor... " />
+            <marker date="1460018867951" expanded="true" signature="5540:5585" placeholder="INSERT INTO rechnung... " />
+            <marker date="1460018867951" expanded="true" signature="6279:6328" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1460018867951" expanded="true" signature="6875:6917" placeholder="INSERT INTO zahlung... " />
+            <marker date="1460018867951" expanded="true" signature="7632:7656" placeholder="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
@@ -778,15 +783,15 @@
         <state relative-caret-position="68">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
-            <marker date="1458380763040" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458380763040" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458380763040" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458380763040" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458380763040" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458380763040" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458380763040" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458380763040" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458380763040" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
+            <marker date="1460018867951" expanded="true" signature="2440:2449" placeholder="truncate mis... " />
+            <marker date="1460018867951" expanded="true" signature="2631:2685" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1460018867951" expanded="true" signature="3118:3169" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1460018867951" expanded="true" signature="3847:3892" placeholder="INSERT INTO bestellung... " />
+            <marker date="1460018867951" expanded="true" signature="4571:4620" placeholder="INSERT INTO creditor... " />
+            <marker date="1460018867951" expanded="true" signature="5540:5585" placeholder="INSERT INTO rechnung... " />
+            <marker date="1460018867951" expanded="true" signature="6279:6328" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1460018867951" expanded="true" signature="6875:6917" placeholder="INSERT INTO zahlung... " />
+            <marker date="1460018867951" expanded="true" signature="7632:7656" placeholder="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
@@ -819,15 +824,56 @@
         <state relative-caret-position="68">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
-            <marker date="1458380763040" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458380763040" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458380763040" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458380763040" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458380763040" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458380763040" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458380763040" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458380763040" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458380763040" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
+            <marker date="1460018867951" expanded="true" signature="2440:2449" placeholder="truncate mis... " />
+            <marker date="1460018867951" expanded="true" signature="2631:2685" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1460018867951" expanded="true" signature="3118:3169" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1460018867951" expanded="true" signature="3847:3892" placeholder="INSERT INTO bestellung... " />
+            <marker date="1460018867951" expanded="true" signature="4571:4620" placeholder="INSERT INTO creditor... " />
+            <marker date="1460018867951" expanded="true" signature="5540:5585" placeholder="INSERT INTO rechnung... " />
+            <marker date="1460018867951" expanded="true" signature="6279:6328" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1460018867951" expanded="true" signature="6875:6917" placeholder="INSERT INTO zahlung... " />
+            <marker date="1460018867951" expanded="true" signature="7632:7656" placeholder="DROP TABLE I... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1458978731254" expanded="true" signature="793:810" placeholder="SELECT * FRO... log" />
+            <marker date="1458978731254" expanded="true" signature="1863:1893" placeholder="DROP TABLE I... " />
+            <marker date="1458978731254" expanded="true" signature="2064:2123" placeholder="INSERT INTO routeInfo" />
+            <marker date="1458978731254" expanded="true" signature="2481:2513" placeholder="DROP TABLE I... " />
+            <marker date="1458978731254" expanded="true" signature="2545:2675" placeholder="CREATE TABLE... uniquePaths" />
+            <marker date="1458978731254" expanded="true" signature="2574:2675" placeholder="SELECT @n :=... ihash" />
+            <marker date="1458978731254" expanded="true" signature="2610:2652" placeholder="SELECT ihash... routeinfo" />
+            <marker date="1458978731254" expanded="true" signature="2659:2673" placeholder="SELECT @n :=... " />
+            <marker date="1458978731254" expanded="true" signature="2707:2737" placeholder="DROP TABLE I... " />
+            <marker date="1458978731254" expanded="true" signature="2769:2804" placeholder="DROP TABLE I... " />
+            <marker date="1458978731254" expanded="true" signature="3097:3122" placeholder="DROP TABLE I... " />
+            <marker date="1458978731254" expanded="true" signature="3351:3435" placeholder="INSERT INTO flow... " />
+            <marker date="1458978731254" expanded="true" signature="5440:5470" placeholder="DROP TABLE I... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <marker date="1460018867951" expanded="true" signature="2440:2449" placeholder="truncate mis... " />
+            <marker date="1460018867951" expanded="true" signature="2631:2685" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1460018867951" expanded="true" signature="3118:3169" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1460018867951" expanded="true" signature="3847:3892" placeholder="INSERT INTO bestellung... " />
+            <marker date="1460018867951" expanded="true" signature="4571:4620" placeholder="INSERT INTO creditor... " />
+            <marker date="1460018867951" expanded="true" signature="5540:5585" placeholder="INSERT INTO rechnung... " />
+            <marker date="1460018867951" expanded="true" signature="6279:6328" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1460018867951" expanded="true" signature="6875:6917" placeholder="INSERT INTO zahlung... " />
+            <marker date="1460018867951" expanded="true" signature="7632:7656" placeholder="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
@@ -860,42 +906,24 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1458380763040" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458380763040" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458380763040" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458380763040" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458380763040" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458380763040" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458380763040" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458380763040" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458380763040" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
+            <marker date="1460018867951" expanded="true" signature="2440:2449" placeholder="truncate mis... " />
+            <marker date="1460018867951" expanded="true" signature="2631:2685" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1460018867951" expanded="true" signature="3118:3169" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1460018867951" expanded="true" signature="3847:3892" placeholder="INSERT INTO bestellung... " />
+            <marker date="1460018867951" expanded="true" signature="4571:4620" placeholder="INSERT INTO creditor... " />
+            <marker date="1460018867951" expanded="true" signature="5540:5585" placeholder="INSERT INTO rechnung... " />
+            <marker date="1460018867951" expanded="true" signature="6279:6328" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1460018867951" expanded="true" signature="6875:6917" placeholder="INSERT INTO zahlung... " />
+            <marker date="1460018867951" expanded="true" signature="7632:7656" placeholder="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlcreator/JsonCreator.java" />
     <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlcreator/JsonCreator.java" />
-    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <marker date="1458380763040" expanded="true" signature="2318:2327" placeholder="truncate mis... " />
-            <marker date="1458380763040" expanded="true" signature="2509:2563" placeholder="INSERT INTO änderungshistorie... " />
-            <marker date="1458380763040" expanded="true" signature="2996:3047" placeholder="INSERT INTO bestellpos... " />
-            <marker date="1458380763040" expanded="true" signature="3725:3770" placeholder="INSERT INTO bestellung... " />
-            <marker date="1458380763040" expanded="true" signature="4449:4498" placeholder="INSERT INTO creditor... " />
-            <marker date="1458380763040" expanded="true" signature="5418:5463" placeholder="INSERT INTO rechnung... " />
-            <marker date="1458380763040" expanded="true" signature="6157:6206" placeholder="INSERT INTO wareneingang... " />
-            <marker date="1458380763040" expanded="true" signature="6753:6795" placeholder="INSERT INTO zahlung... " />
-            <marker date="1458380763040" expanded="true" signature="7510:7534" placeholder="DROP TABLE I... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlanalyzer/Analyze.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
+        <state relative-caret-position="816">
           <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -912,6 +940,24 @@
             <marker date="1458978731254" expanded="true" signature="3097:3122" placeholder="DROP TABLE I... " />
             <marker date="1458978731254" expanded="true" signature="3351:3435" placeholder="INSERT INTO flow... " />
             <marker date="1458978731254" expanded="true" signature="5440:5470" placeholder="DROP TABLE I... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/reisisoft/jku/pjdke/sqlimporter/Import.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
+          <folding>
+            <marker date="1460018867951" expanded="true" signature="2440:2449" placeholder="truncate mis... " />
+            <marker date="1460018867951" expanded="true" signature="2631:2685" placeholder="INSERT INTO änderungshistorie... " />
+            <marker date="1460018867951" expanded="true" signature="3118:3169" placeholder="INSERT INTO bestellpos... " />
+            <marker date="1460018867951" expanded="true" signature="3847:3892" placeholder="INSERT INTO bestellung... " />
+            <marker date="1460018867951" expanded="true" signature="4571:4620" placeholder="INSERT INTO creditor... " />
+            <marker date="1460018867951" expanded="true" signature="5540:5585" placeholder="INSERT INTO rechnung... " />
+            <marker date="1460018867951" expanded="true" signature="6279:6328" placeholder="INSERT INTO wareneingang... " />
+            <marker date="1460018867951" expanded="true" signature="6875:6917" placeholder="INSERT INTO zahlung... " />
+            <marker date="1460018867951" expanded="true" signature="7632:7656" placeholder="DROP TABLE I... " />
           </folding>
         </state>
       </provider>

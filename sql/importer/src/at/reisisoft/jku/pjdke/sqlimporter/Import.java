@@ -25,7 +25,7 @@ public class Import {
     private static final String WARENEINGANG = "wareneingang";
     private static final String ZAHLUNG = "zahlung";
 
-
+    //Check password
     public static final String JDBC_CONNECTION_STRING = "jdbc:mysql://localhost/pjdke?user=root&password=1234&useSSL=false";
 
     public static void main(String[] args) throws Exception {
@@ -44,10 +44,11 @@ public class Import {
                 return null;
             }
         }).filter(Objects::nonNull).collect(Collectors.toMap(AbstractMap.SimpleEntry::getKey, AbstractMap.SimpleEntry::getValue));
-
-        log("Get connection");
         Connection con = DriverManager.getConnection(JDBC_CONNECTION_STRING);
         con.setAutoCommit(false);
+        log("Init db");
+        Path create = dir.getParent().resolve("create").resolve("create.sql");
+        log("Get connection");
         try (Statement s = con.createStatement()) {
             for (String table : filenames) {
                 s.execute("truncate " + table);
