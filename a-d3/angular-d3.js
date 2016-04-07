@@ -12,7 +12,7 @@ ad3.factory('uniqueId', function () {
 ad3.factory('svgTag', ['uniqueId', function (uniqueId) {
     return function (elem, onCreate, onUpdate, width, height) {
         let svg = angular.element(elem).find("svg");
-        if (svg.length == 0) {
+        if (svg.length === 0) {
             let id = "rand" + uniqueId();
             elem.append("<svg id='" + id + '\'' + (width !== undefined ? ( " width='" + width) : '') + (height !== undefined ? ("' height='" + height) : '') + "'></svg>");
             onCreate(id);

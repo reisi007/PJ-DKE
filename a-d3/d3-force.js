@@ -40,9 +40,13 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
         }
 
         let labelDistance = 0;
-        svgTag(elem, w, h).then(function (uniqueId) {
+        svgTag(elem, function onCreate(uniqueId) {
             let svg = d3.select('#' + uniqueId);
-        })
+            //TODO
+        }, function onUpdate(uniqueId) {
+            let svg = d3.select('#' + uniqueId);
+            //TODO
+        }, w, h);
     };
     return {
         restrict: "E",

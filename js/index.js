@@ -92,9 +92,7 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     function setTextFieldValue(val) {
         let textfield = document.getElementById('textInput');
         textfield = textfield.MaterialTextfield;
-        console.log(textfield);
         if (textfield) {
-            console.log(textfield);
             textfield.change(val);
             $scope.variant = val;
         }
