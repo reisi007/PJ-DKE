@@ -102,6 +102,10 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
         if ($scope.rawData === undefined)
             return 0;
         let percentage = $scope.rawData.selectedPercentage[0].percentage;
+        if ($scope.minCoverage === 0) {
+            $scope.minCoverage = percentage;
+        }
+        console.log('minCoverage', $scope.minCoverage);
         let slider = document.getElementById('slider');
         if (slider !== undefined && slider.MaterialSlider !== undefined) {
             slider.MaterialSlider.change(percentage);

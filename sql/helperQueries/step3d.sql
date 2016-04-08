@@ -12,6 +12,6 @@ CREATE TABLE routeStat AS SELECT
                                         FROM uniquepaths up
                                           JOIN routeinfo ri ON up.ihash = ri.ihash
                                         GROUP BY up.n
-                                        ORDER BY cnt DESC
+                                        ORDER BY cnt DESC, routeId
                                       ) a, (SELECT count(*) AS 'value'
-                                            FROM routeinfo) total) a, (SELECT @n := 0) m;
+                                            FROM routeinfo) total) a, (SELECT @n := 0) m
