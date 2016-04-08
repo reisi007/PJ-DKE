@@ -24,7 +24,12 @@ public class Analyze {
         final ResultSet resultSet = statement.executeQuery("SELECT * FROM log");
         final Map<Long, Set<LogElement>> traces = new HashMap<>();
         long bestellnr;
-        final Comparator<LogElement> logElementComparator = (e1, e2) -> e1.getTimestamp().compareTo(e2.getTimestamp());
+        final Comparator<LogElement> logElementComparator = (e1, e2) -> {
+            int res = e1.getTimestamp().compareTo(e2.getTimestamp());
+            if (res != 0)
+                return res;
+            return e1.getType().compareTo(e2.getType());
+        };
         String type;
         Timestamp timestamp;
         while (resultSet.next()) {
@@ -35,7 +40,7 @@ public class Analyze {
         }
         log(traces.size() + " verschiendene Bestellungen!");
         Map<Long, String> bestellNrHashCodeSet = traces.entrySet().parallelStream().collect(Collectors.toMap(Map.Entry::getKey, kvp -> kvp.getValue().toString()));
-
+        traces.entrySet().stream().sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey())).forEach((kvp) -> log(String.format("Bestellnr: %s Flow: %s", kvp.getKey(), kvp.getValue())));
         //In Tabelle schreiben
         final Path dir = Paths.get("").toAbsolutePath().getParent().resolve("helperQueries");
         final Statement statement2 = connection.createStatement();
