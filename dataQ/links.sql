@@ -4,5 +4,5 @@ SELECT
   avg(deltaSeconds) AS deltaSec,
   count(*)          AS cnt
 FROM graphdata
-WHERE nodetype != 'end' AND (route IN (%s) OR '%s' = 0)
+WHERE nodetype != 'end' AND route IN (%s)
 GROUP BY `from`, `to`;

@@ -98,6 +98,16 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
         }
     }
 
+    $scope.updatePercentUI = function () {
+        if ($scope.rawData === undefined)
+            return 0;
+        let percentage = $scope.rawData.selectedPercentage[0].percentage;
+        let slider = document.getElementById('slider');
+        if (slider !== undefined && slider.MaterialSlider !== undefined) {
+            slider.MaterialSlider.change(percentage);
+        }
+        return percentage;
+    };
 
     function watchUpdate() {
         $scope.update();

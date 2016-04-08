@@ -4,6 +4,7 @@
 ad3.directive('d3Force', ['svgTag', function (svgTag) {
     let createDiagram = function ($scope, elem, attrs) {
         let data = attrs.d3Data;
+        let id = attrs.id;
         try {
             data = JSON.parse(data);
         } catch (e) {
@@ -11,8 +12,6 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
             return;
         }
         if (data.length === 0) return;
-        /*console.log("d3Force");
-         console.log(data);*/
         let nodes = data.nodes, links = data.links, labelType = data.labelType;
         if (nodes.length === 0 || links.length === 0) {
             return;
@@ -38,15 +37,7 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
                 d = tmp;
             }
         }
-
-        let labelDistance = 0;
-        svgTag(elem, function onCreate(uniqueId) {
-            let svg = d3.select('#' + uniqueId);
-            //TODO
-        }, function onUpdate(uniqueId) {
-            let svg = d3.select('#' + uniqueId);
-            //TODO
-        }, w, h);
+        //TODO d3
     };
     return {
         restrict: "E",

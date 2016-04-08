@@ -65,7 +65,7 @@ else {
 $exploded = explode(',', $id);
 
 $result = [];
-foreach (['nodes', 'links', 'nodestat', 'routestat'] as $name) {
+foreach (['nodes', 'links', 'nodestat', 'routestat', 'selectedPercentage'] as $name) {
     $sql = readFile("$name.sql");
     $result[$name] = executeWithId($connection, $sql, $exploded);
 }

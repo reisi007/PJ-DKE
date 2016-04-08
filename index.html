@@ -24,16 +24,15 @@
     </header>
     <main class="mdl-layout__content" ng-cloak>
         <div class="page-content">
-            <d3-force class="item" width="300" height="300" charge="100" distance="50"
+            <d3-force id="d3_1" class="item" width="300" height="300" charge="100" distance="50"
                       d3-data="{{graphData}}"></d3-force>
             <div>
                 <div class="limit item"><p>Nodes: {{graphData.nodes.length}}<br>
                     Links: {{graphData.links.length}}</p></div>
                 <div class="limit item">
-                    <span ng-hide="variant.length >0"> Minimum coverage of graph: {{minCoverage}} %</span>
-                    <span ng-show="variant.length >0">Manual selection - percentage unavailable!</span>
+                    Coverage: {{updatePercentUI()}}%
                     <!-- Slider with Starting Value -->
-                    <input ng-model="minCoverage" class="mdl-slider mdl-js-slider" type="range"
+                    <input id="slider" ng-model="minCoverage" class="mdl-slider mdl-js-slider" type="range"
                            step="0.1" min="0" max="100" ng-init="minCoverage = 100" tabindex="0">
                     <!-- Numeric Textfield -->
                     <div id="textInput" class="mdl-textfield mdl-js-textfield">
