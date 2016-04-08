@@ -1,4 +1,5 @@
 SELECT
   routeId,
   coverage
-FROM naccRouteStats;
+FROM naccRouteStats
+ORDER BY coverage DESC, routeId;
