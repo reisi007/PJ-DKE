@@ -40,7 +40,6 @@ public class Analyze {
         }
         log(traces.size() + " verschiendene Bestellungen!");
         Map<Long, String> bestellNrHashCodeSet = traces.entrySet().parallelStream().collect(Collectors.toMap(Map.Entry::getKey, kvp -> kvp.getValue().toString()));
-        traces.entrySet().stream().sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey())).forEach((kvp) -> log(String.format("Bestellnr: %s Flow: %s", kvp.getKey(), kvp.getValue())));
         //In Tabelle schreiben
         final Path dir = Paths.get("").toAbsolutePath().getParent().resolve("helperQueries");
         final Statement statement2 = connection.createStatement();
@@ -57,7 +56,7 @@ public class Analyze {
         pstmt.executeBatch();
         //Select unique paths
         statement2.execute("DROP TABLE IF EXISTS uniquePaths");
-        statement2.execute("CREATE TABLE  uniquePaths AS SELECT @n := @n + 1 n,  ihash FROM (SELECT ihash FROM routeinfo GROUP BY ihash) ri, (SELECT @n := 0)m");
+        statement2.execute("CREATE TABLE  uniquePaths AS SELECT @n := @n + 1 n,  ihash FROM (SELECT ihash FROM routeinfo GROUP BY ihash ORDER BY count(ihash) DESC) ri, (SELECT @n := 0)m");
         statement2.execute("DROP TABLE IF EXISTS routeStat");
         statement2.execute("DROP TABLE IF EXISTS naccRouteStats");
         statement2.execute(loadSqlfile(dir.resolve("step3d.sql")));
