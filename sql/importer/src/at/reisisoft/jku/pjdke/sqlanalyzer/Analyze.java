@@ -38,7 +38,7 @@ public class Analyze {
             timestamp = resultSet.getTimestamp("when");
             traces.computeIfAbsent(bestellnr, e -> new TreeSet<>(logElementComparator)).add(new LogElement(type, bestellnr, timestamp));
         }
-        log(traces.size() + " verschiendene Bestellungen!");
+        log(traces.size() + " verschiendene Bestellpositionen!");
         Map<Long, String> bestellNrHashCodeSet = traces.entrySet().parallelStream().collect(Collectors.toMap(Map.Entry::getKey, kvp -> kvp.getValue().toString()));
         //In Tabelle schreiben
         final Path dir = Paths.get("").toAbsolutePath().getParent().resolve("helperQueries");
