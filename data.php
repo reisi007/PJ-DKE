@@ -36,13 +36,19 @@ function readFile($filename)
  */
 function executeWithId($connection, $sql, $explodedId)
 {
-    foreach ($explodedId as $value) {
-        $value = $connection->quote($value);
+    try {
+        foreach ($explodedId as $value) {
+            $value = $connection->quote($value);
+        }
+        $id = implode(',', $explodedId);
+        $sql = sprintf($sql, $id, $id);
+        $stmt = $connection->query($sql);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch (\PDOException $e) {
+        var_dump($sql);
+        var_dump($explodedId);
+        throw $e;
     }
-    $id = implode(',', $explodedId);
-    $sql = sprintf($sql, $id, $id);
-    $stmt = $connection->query($sql);
-    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 }
 
 //Start 'main'
@@ -52,7 +58,7 @@ if (isset($_REQUEST['id']))
     $id = $_REQUEST['id'];
 else {
     $p = $_REQUEST['percentage'];
-    $sql = 'SELECT routeId FROM routestat WHERE coverage <= (SELECT min(coverage) AS minCov FROM routestat WHERE coverage >= :percentage/100)';
+    $sql = 'SELECT routeId FROM routestat WHERE coverage <= ifnull((SELECT min(coverage) AS minCov FROM routestat WHERE coverage >= :percentage/100),1)';
     $pstmt = $connection->prepare($sql);
     $pstmt->bindParam(':percentage', $p);
     $pstmt->execute();
