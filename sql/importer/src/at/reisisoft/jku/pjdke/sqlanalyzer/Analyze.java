@@ -21,9 +21,10 @@ public class Analyze {
         final Connection connection = DriverManager.getConnection(Import.JDBC_CONNECTION_STRING);
         connection.setAutoCommit(false);
         final Statement statement = connection.createStatement();
+        statement.execute("USE pjdke");
         final ResultSet resultSet = statement.executeQuery("SELECT * FROM log");
         final Map<Long, Set<LogElement>> traces = new HashMap<>();
-        long bestellnr;
+        long id;
         final Comparator<LogElement> logElementComparator = (e1, e2) -> {
             int res = e1.getTimestamp().compareTo(e2.getTimestamp());
             if (res != 0)
@@ -33,21 +34,21 @@ public class Analyze {
         String type;
         Timestamp timestamp;
         while (resultSet.next()) {
-            bestellnr = resultSet.getLong("bestellnr");
+            id = resultSet.getLong("id");
             type = resultSet.getString("type");
             timestamp = resultSet.getTimestamp("when");
-            traces.computeIfAbsent(bestellnr, e -> new TreeSet<>(logElementComparator)).add(new LogElement(type, bestellnr, timestamp));
+            traces.computeIfAbsent(id, e -> new TreeSet<>(logElementComparator)).add(new LogElement(type, id, timestamp));
         }
         log(traces.size() + " verschiendene Bestellpositionen!");
-        Map<Long, String> bestellNrHashCodeSet = traces.entrySet().parallelStream().collect(Collectors.toMap(Map.Entry::getKey, kvp -> kvp.getValue().toString()));
+        Map<Long, String> idHashCodeSet = traces.entrySet().parallelStream().collect(Collectors.toMap(Map.Entry::getKey, kvp -> kvp.getValue().toString()));
         //In Tabelle schreiben
         final Path dir = Paths.get("").toAbsolutePath().getParent().resolve("helperQueries");
         final Statement statement2 = connection.createStatement();
         statement2.execute("DROP TABLE IF EXISTS routeInfo");
         statement2.execute(loadSqlfile(dir.resolve("step3.sql")));
         //Insert in route info
-        final PreparedStatement pstmt = connection.prepareStatement("INSERT INTO  routeInfo(bestellnr,hash,ihash) VALUES (?,?,?)");
-        for (Map.Entry<Long, String> kvp : bestellNrHashCodeSet.entrySet()) {
+        final PreparedStatement pstmt = connection.prepareStatement("INSERT INTO  routeInfo(id,hash,ihash) VALUES (?,?,?)");
+        for (Map.Entry<Long, String> kvp : idHashCodeSet.entrySet()) {
             pstmt.setLong(1, kvp.getKey());
             pstmt.setString(2, kvp.getValue());
             pstmt.setInt(3, kvp.getValue().hashCode());
@@ -65,8 +66,8 @@ public class Analyze {
         String step3bSql = IOUtils.toString(Files.newBufferedReader(dir.resolve("step3b.sql")));
         statement2.execute("DROP TABLE IF EXISTS flow");
         statement2.execute(step3bSql);
-        //                                                                          1       2     3     4   5     6     7
-        PreparedStatement pstmt2 = connection.prepareStatement("INSERT INTO flow(bestellnr,prev,tsPrev,cur,tsCur,next,tsNext) VALUES (?,?,?,?,?,?,?)");
+        //                                                                       1   2     3     4   5     6     7
+        PreparedStatement pstmt2 = connection.prepareStatement("INSERT INTO flow(id,prev,tsPrev,cur,tsCur,next,tsNext) VALUES (?,?,?,?,?,?,?)");
         for (Long key : traces.keySet()) {
             ArrayList<LogElement> value = new ArrayList<>(traces.get(key));
             //First element

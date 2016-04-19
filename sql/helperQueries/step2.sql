@@ -1,127 +1,128 @@
 CREATE TABLE log AS SELECT *
                     FROM (SELECT *
                           FROM (SELECT
-                                  concat(b.bestellnr, b.posnr) AS 'bestellnr',
+                                  concat(b.bestellnr, b.posnr) AS 'id',
                                   'Bestellmenge geändert'      AS 'type',
                                   h.aenderts                   AS 'when'
                                 FROM Änderungshistorie h
-                                  JOIN bestellpos b ON h.id = b.bestellnr) bg
+                                  JOIN pjdke.bestellpos b ON h.id = b.bestellnr) bg
                           UNION (SELECT
-                                   concat(pos.bestellnr, pos.posnr) AS 'bestellnr',
+                                   concat(pos.bestellnr, pos.posnr) AS 'id',
                                    'Bestellposition erstellt'       AS 'type',
                                    pos.erstelltTs                   AS 'when'
-                                 FROM bestellpos pos
-                                   JOIN bestellung b ON pos.bestellnr = b.bestellnr)
+                                 FROM pjdke.bestellpos pos
+                                   JOIN pjdke.bestellung b ON pos.bestellnr = b.bestellnr)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    a.type,
                                    a.`when`
                                  FROM (SELECT
                                          id,
                                          'Bestellposition storniert' AS 'type',
                                          aenderts                    AS 'when'
-                                       FROM Änderungshistorie
+                                       FROM pjdke.änderungshistorie
                                        WHERE tabelle = 'Bestellposition' AND feld = 'StornoKZ') a
                                    JOIN (SELECT
                                            bestellnr,
                                            posnr,
                                            concat(posnr, bestellnr) AS 'joinId'
-                                         FROM bestellpos) bp ON a.id = bp.joinId
-                                   JOIN bestellung b ON bp.bestellnr = b.bestellnr)
+                                         FROM pjdke.bestellpos) bp ON a.id = bp.joinId
+                                   JOIN pjdke.bestellung b ON bp.bestellnr = b.bestellnr)
                           UNION (SELECT
-                                   concat(b.bestellnr, posnr) AS 'bestellnr',
-                                   'Bestellung erstellt'      AS 'type',
-                                   bp.erstelltTs              AS 'when'
-                                 FROM bestellung b
-                                   JOIN bestellpos bp ON b.bestellnr = bp.bestellnr)
+                                   concat(b.bestellnr, posnr)  AS 'id',
+                                   'pjdke.bestellung erstellt' AS 'type',
+                                   bp.erstelltTs               AS 'when'
+                                 FROM pjdke.bestellung b
+                                   JOIN pjdke.bestellpos bp ON b.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(b.bestellnr, posnr) AS 'bestellnr',
-                                   'Bestellung freigegeben'   AS 'type',
-                                   freigabets                 AS 'when'
-                                 FROM bestellung b
-                                   JOIN bestellpos bp ON b.bestellnr = bp.bestellnr)
+                                   concat(b.bestellnr, posnr)     AS 'id',
+                                   'pjdke.bestellung freigegeben' AS 'type',
+                                   freigabets                     AS 'when'
+                                 FROM pjdke.bestellung b
+                                   JOIN pjdke.bestellpos bp ON b.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    'Kreditor erstellt'            AS 'type',
                                    c.erstellt                     AS 'when'
                                  FROM creditor c
-                                   JOIN bestellung b ON c.kredNr = b.krednr
-                                   JOIN bestellpos bp ON b.bestellnr = bp.bestellnr)
+                                   JOIN pjdke.bestellung b ON c.kredNr = b.krednr
+                                   JOIN pjdke.bestellpos bp ON b.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    a.type,
                                    a.`when`
                                  FROM (SELECT
                                          id                  AS 'kreditorId',
                                          'Kreditor gesperrt' AS 'type',
                                          aenderts            AS 'when'
-                                       FROM Änderungshistorie
+                                       FROM pjdke.Änderungshistorie
                                        WHERE tabelle = 'Kreditor' AND wertNeu = 'X') a
-                                   JOIN bestellung b ON a.kreditorId = b.krednr
-                                   JOIN bestellpos bp ON b.bestellnr = bp.bestellnr)
+                                   JOIN pjdke.bestellung b ON a.kreditorId = b.krednr
+                                   JOIN pjdke.bestellpos bp ON b.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    'Preis geändert'               AS 'type',
                                    `when`
                                  FROM (SELECT
                                          id,
                                          aenderts AS 'when'
-                                       FROM Änderungshistorie
+                                       FROM pjdke.Änderungshistorie
                                        WHERE tabelle = 'Bestellposition' AND feld = 'Preis') a
                                    JOIN (SELECT
                                            bestellnr,
                                            posnr,
                                            concat(posnr, bestellnr) AS 'joinId'
-                                         FROM bestellpos) bp ON a.id = bp.joinId
-                                   JOIN bestellung b ON b.bestellnr = bp.bestellnr)
+                                         FROM pjdke.bestellpos) bp ON a.id = bp.joinId
+                                   JOIN pjdke.bestellung b ON b.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    'Rechnung eingegangen'         AS 'type',
                                    eingangsdatum                  AS 'when'
-                                 FROM rechnung r
-                                   JOIN bestellpos bp ON r.bestellnr = bp.bestellnr)
+                                 FROM pjdke.rechnung r
+                                   JOIN pjdke.bestellpos bp ON r.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    'Rechnung gestellt'            AS 'type',
                                    rechnungsdatum                 AS 'when'
-                                 FROM rechnung r
-                                   JOIN bestellpos bp ON r.bestellnr = bp.bestellnr)
+                                 FROM pjdke.rechnung r
+                                   JOIN pjdke.bestellpos bp ON r.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    'Ware eingegangen'             AS 'type',
                                    eingangsts                     AS 'when'
-                                 FROM wareneingang w
-                                   JOIN bestellpos bp ON w.bestellnr = bp.bestellnr)
+                                 FROM pjdke.wareneingang w
+                                   JOIN pjdke.bestellpos bp ON w.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    'Zahlung durchgeführt'         AS 'type',
                                    zahlts                         AS 'when'
-                                 FROM zahlung z
+                                 FROM pjdke.zahlung z
                                    JOIN (SELECT
                                            bestellnr,
                                            posnr,
                                            concat(posnr, bestellnr) AS 'joinId'
-                                         FROM bestellpos) bp ON bp.joinId = z.id)
+                                         FROM pjdke.bestellpos) bp ON bp.joinId = z.id)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    'Kreditor entsperrt'           AS 'type',
                                    aenderts                       AS 'when'
                                  FROM (SELECT
                                          id,
                                          aenderts
-                                       FROM änderungshistorie
+                                       FROM pjdke.Änderungshistorie
                                        WHERE
-                                         tabelle = 'Kreditor' AND wertAlt = '' AND änderungshistorie.wertNeu = 'X') d
-                                   JOIN bestellung b ON d.id = b.krednr
-                                   JOIN bestellpos bp ON b.bestellnr = bp.bestellnr)
+                                         tabelle = 'Kreditor' AND wertAlt = '' AND
+                                         pjdke.Änderungshistorie.wertNeu = 'X') d
+                                   JOIN pjdke.bestellung b ON d.id = b.krednr
+                                   JOIN pjdke.bestellpos bp ON b.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(bp.bestellnr, bp.posnr) AS 'bestellnr',
+                                   concat(bp.bestellnr, bp.posnr) AS 'id',
                                    a.type,
                                    a.`when`
                                  FROM (SELECT
-                                         id                     AS 'bestellnr',
-                                         'Bestellung storniert' AS 'type',
-                                         aenderts               AS 'when'
-                                       FROM änderungshistorie
-                                       WHERE tabelle = 'Bestellung' AND feld = 'StornoKZ') a
-                                   JOIN bestellpos bp ON a.bestellnr = bp.bestellnr)) t
+                                         id                           AS 'bestellnr',
+                                         'pjdke.bestellung storniert' AS 'type',
+                                         aenderts                     AS 'when'
+                                       FROM pjdke.Änderungshistorie
+                                       WHERE tabelle = 'pjdke.bestellung' AND feld = 'StornoKZ') a
+                                   JOIN pjdke.bestellpos bp ON a.bestellnr = bp.bestellnr)) t

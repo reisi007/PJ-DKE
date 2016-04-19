@@ -4,7 +4,10 @@ header('Content-Type: application/json');
 const user = 'root';
 const password = '1234';
 const connectUrl = 'mysql:host=localhost:3306;dbname=pjdke;charset=utf8mb4';
-if (isset($_REQUEST['id']) && isset($_REQUEST['percentage'])) {
+if (
+    (isset($_REQUEST['id']) && isset($_REQUEST['percentage'])) ||
+    (!isset($_REQUEST['id']) && !isset($_REQUEST['percentage']))
+) {
     echo '{"error": -1}';
     exit();
 }

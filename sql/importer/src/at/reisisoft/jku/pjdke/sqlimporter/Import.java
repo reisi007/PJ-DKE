@@ -8,10 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,7 +23,7 @@ public class Import {
     private static final String ZAHLUNG = "zahlung";
 
     //Check password
-    public static final String JDBC_CONNECTION_STRING = "jdbc:mysql://localhost/pjdke?user=root&password=1234&useSSL=false";
+    public static final String JDBC_CONNECTION_STRING = "jdbc:mysql://localhost/?user=root&password=1234&useSSL=false";
 
     public static void main(String[] args) throws Exception {
         log("Loading CSV");
@@ -46,17 +43,21 @@ public class Import {
         }).filter(Objects::nonNull).collect(Collectors.toMap(AbstractMap.SimpleEntry::getKey, AbstractMap.SimpleEntry::getValue));
         Connection con = DriverManager.getConnection(JDBC_CONNECTION_STRING);
         con.setAutoCommit(false);
-        log("Init db");
-        Path create = dir.getParent().resolve("create").resolve("create.sql");
         log("Get connection");
+        log("Init db");
         try (Statement s = con.createStatement()) {
-            for (String table : filenames) {
-                s.execute("truncate " + table);
-            }
+            s.addBatch("USE pjdke");
+            for (String table : filenames)
+                s.addBatch("truncate pjdke." + table);
+            s.executeBatch();
+        } catch (SQLException e) {
+            Path create = dir.getParent().resolve("create").resolve("create.sql");
+            log("Please execute '" + create + "' and try to run this problem again");
+            throw e;
         }
         List<String[]> rows = null;
         log("Filling Änderungshistorie");
-        PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO änderungshistorie VALUES (?,?,?,?,?,?,?,?)");
+        PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO pjdke.änderungshistorie VALUES (?,?,?,?,?,?,?,?)");
         rows = fileContent.get(ÄNDERUNGSHISTORIE);
         for (String[] line : rows) {
             for (int i = 0; i < line.length; i++) {
@@ -67,7 +68,7 @@ public class Import {
         preparedStatement.executeBatch();
         preparedStatement.close();
         log("Filling bestellpos");
-        preparedStatement = con.prepareStatement("INSERT INTO bestellpos VALUES (?,?,?,?,?,?,?,?,?,?)");
+        preparedStatement = con.prepareStatement("INSERT INTO pjdke.bestellpos VALUES (?,?,?,?,?,?,?,?,?,?)");
         rows = fileContent.get(BESTELLPOS);
         for (String[] line : rows) {
             for (int i = 0; i < line.length; i++) {
@@ -85,7 +86,7 @@ public class Import {
         preparedStatement.executeBatch();
         preparedStatement.close();
         log("Filling bestellung");
-        preparedStatement = con.prepareStatement("INSERT INTO bestellung VALUES (?,?,?,?,?,?,?)");
+        preparedStatement = con.prepareStatement("INSERT INTO pjdke.bestellung VALUES (?,?,?,?,?,?,?)");
         rows = fileContent.get(BESTELLUNG);
         for (String[] line : rows) {
             for (int i = 0; i < line.length; i++) {
@@ -103,7 +104,7 @@ public class Import {
         preparedStatement.executeBatch();
         preparedStatement.close();
         log("Filling creditor");
-        preparedStatement = con.prepareStatement("INSERT INTO creditor VALUES (?,?,?,?,?,?,?,?,?,?)");
+        preparedStatement = con.prepareStatement("INSERT INTO pjdke.creditor VALUES (?,?,?,?,?,?,?,?,?,?)");
         rows = fileContent.get(KREDITOR);
         for (String[] line : rows) {
             for (int i = 0; i < line.length; i++) {
@@ -125,7 +126,7 @@ public class Import {
         preparedStatement.executeBatch();
         preparedStatement.close();
         log("Filling rechnung");
-        preparedStatement = con.prepareStatement("INSERT INTO rechnung VALUES (?,?,?,?,?,?,?,?)");
+        preparedStatement = con.prepareStatement("INSERT INTO pjdke.rechnung VALUES (?,?,?,?,?,?,?,?)");
         rows = fileContent.get(RECHNUNG);
         for (String[] line : rows) {
             for (int i = 0; i < line.length; i++) {
@@ -144,7 +145,7 @@ public class Import {
         preparedStatement.executeBatch();
         preparedStatement.close();
         log("Filling wareneingang");
-        preparedStatement = con.prepareStatement("INSERT INTO wareneingang VALUES (?,?,?,?,?,?,?,?)");
+        preparedStatement = con.prepareStatement("INSERT INTO pjdke.wareneingang VALUES (?,?,?,?,?,?,?,?)");
         rows = fileContent.get(WARENEINGANG);
         for (String[] line : rows) {
             for (int i = 0; i < line.length; i++) {
@@ -160,7 +161,7 @@ public class Import {
         preparedStatement.executeBatch();
         preparedStatement.close();
         log("Filling zahlung");
-        preparedStatement = con.prepareStatement("INSERT INTO zahlung VALUES (?,?,?,?,?,?,?)");
+        preparedStatement = con.prepareStatement("INSERT INTO pjdke.zahlung VALUES (?,?,?,?,?,?,?)");
         rows = fileContent.get(ZAHLUNG);
         for (String[] line : rows) {
             for (int i = 0; i < line.length; i++) {
@@ -179,7 +180,7 @@ public class Import {
         Path pStep2Sql = dir.resolve("../helperQueries/step2.sql");
         String step2Sql = IOUtils.toString(Files.newBufferedReader(pStep2Sql));
         Statement statement = con.createStatement();
-        statement.execute("DROP TABLE IF EXISTS log");
+        statement.execute("DROP TABLE IF EXISTS pjdke.log");
         statement.execute(step2Sql);
         con.commit();
         log("Done syncing");
