@@ -8,7 +8,7 @@ if (
     (isset($_REQUEST['id']) && isset($_REQUEST['percentage'])) ||
     (!isset($_REQUEST['id']) && !isset($_REQUEST['percentage']))
 ) {
-    echo '{"error": -1}';
+    echo '{"error": "Choose eother a set of IDs oder a percentage [between 0 and 100]"}';
     exit();
 }
 /**
@@ -16,10 +16,14 @@ if (
  */
 function getConenction()
 {
-    $connection = new \PDO(connectUrl, user, password);
-    $connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-    $connection->beginTransaction();
-    return $connection;
+    try {
+        $connection = new \PDO(connectUrl, user, password);
+        $connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $connection->beginTransaction();
+        return $connection;
+    } catch (\PDOException $e) {
+        throw new \PDOException('Could not connect to MySQL database!', $e->getCode());
+    }
 }
 
 /**
