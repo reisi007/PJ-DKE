@@ -1,11 +1,3 @@
-svg .node {
-  stroke: black;
-  stroke-width: 1.5px; }
-svg .link {
-  stroke: black;
-  stroke-width: 1.5px;
-  fill: none; }
-
 .mdl-layout__header-row {
   padding-left: 16px; }
 
@@ -16,23 +8,6 @@ svg .link {
   padding-top: 24px;
   margin-bottom: 0;
   z-index: 998; }
-
-.page-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: space-around;
-  height: auto;
-  margin-top: 10px;
-}
-
-.page-content div.limit {
-  max-width: 300px;
-}
-
-.page-content .item {
-  padding: 4px;
-}
 
 d3-bar div {
   text-align: left; }
@@ -45,30 +20,46 @@ d3-bar div {
 
 d3-range {
   font-size: 0.8em;
-  width: 175px;
-}
+  width: 175px; }
+  d3-range div.chart {
+    width: 165px;
+    display: block; }
+    d3-range div.chart div {
+      height: 8px; }
+      d3-range div.chart div.active {
+        background-color: #0eff03;
+        color: black; }
+      d3-range div.chart div.inactive {
+        background-color: #4c7d47;
+        color: white; }
 
-d3-range div.chart {
-  width: 165px;
-  display: block;
-}
+d3-range, d3-bar {
+  max-width: 350px; }
 
-d3-range div.chart div {
-  height: 8px;
-}
+#left {
+  width: 600px;
+  float: left;
+  height: 100%; }
 
-d3-range div.chart div.active {
-  background-color: #0eff03;
-  color: black;
-}
+#right {
+  margin-left: 600px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  height: auto;
+  margin-top: 10px; }
+  #right div.limit {
+    max-width: 300px; }
+  #right .item {
+    padding: 4px; }
 
-d3-range div.chart div.inactive {
-  background-color: #4c7d47;
-  color: white;
-}
+.clear {
+  clear: both; }
 
-d3-range, d3-bar, d3-force {
-  max-width: 350px;
-}
+svg#d3_1 {
+  width: 100%;
+  height: 80vh;
+  min-height: 500px; }
 
 /*# sourceMappingURL=app.css.map */

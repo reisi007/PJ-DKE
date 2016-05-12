@@ -1,7 +1,7 @@
 /**
  * Created by Florian on 19.03.2016.
  */
-ad3.directive('d3Force', ['svgTag', function (svgTag) {
+app.directive('d3Graph', function () {
     let createDiagram = function ($scope, elem, attrs) {
         let data = attrs.d3Data;
         let id = attrs.id;
@@ -16,31 +16,13 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
         if (nodes.length === 0 || links.length === 0) {
             return;
         }
-
-        const defaultW = 200;
-        const defaultH = 200;
-        const defaultCharge = 200;
-        const defaultLinkDist = 40;
-        let w = $scope.width = (attrs.width === undefined) ? defaultW : attrs.width;
-        let h = $scope.height = (attrs.height === undefined) ? defaultW : attrs.height;
-        let c = -defaultCharge;
-        if (attrs.charge !== undefined) {
-            let tmp = parseFloat(attrs.charge);
-            if (!isNaN(tmp)) {
-                c = -tmp;
-            }
-        }
-        let d = defaultLinkDist;
-        if (attrs.distance !== undefined) {
-            let tmp = parseFloat(attrs.distance);
-            if (!isNaN(tmp)) {
-                d = tmp;
-            }
-        }
-        //TODO d3
+        /*TODO d3
+         * nodes -> Array of nodes
+         * links -> Array of links
+         * */
     };
     return {
-        restrict: "E",
+        restrict: "A",
         link: function ($scope, elem, attrs) {
             attrs.$observe('d3Data', function () {
                 createDiagram($scope, elem, attrs);
@@ -59,4 +41,4 @@ ad3.directive('d3Force', ['svgTag', function (svgTag) {
             });
         }
     }
-}]);
+});

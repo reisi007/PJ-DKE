@@ -2,7 +2,7 @@
  * Created by Florian on 19.03.2016.
  */
 
-ad3.directive('d3Bar', [function () {
+app.directive('d3Bar', [function () {
     return {
         restrict: 'E',
         templateUrl: 'barchart.html',
@@ -11,7 +11,7 @@ ad3.directive('d3Bar', [function () {
         }
     }
 }]);
-ad3.directive('d3Range', [function () {
+app.directive('d3Range', [function () {
     return {
         restrict: 'E',
         templateUrl: 'rangeChart.html',
@@ -20,7 +20,7 @@ ad3.directive('d3Range', [function () {
         }
     }
 }]);
-ad3.controller('RangeController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+app.controller('RangeController', ['$scope', '$rootScope', function ($scope, $rootScope) {
     $scope.getActiveClass = function (routeId) {
         return ($scope.data.selectedIds.indexOf(routeId) == -1 ? 'in' : '') + 'active';
     };

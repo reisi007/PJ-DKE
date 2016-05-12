@@ -3,7 +3,7 @@
  * Created by Florian on 12.03.2016.
  */
 
-let app = angular.module('PjDke', ['D3js']);
+let app = angular.module('PjDke', []);
 app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     $scope.rawData = undefined;
     $scope.graphData = [];
