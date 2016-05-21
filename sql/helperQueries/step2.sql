@@ -29,15 +29,15 @@ CREATE TABLE log AS SELECT *
                                          FROM pjdke.bestellpos) bp ON a.id = bp.joinId
                                    JOIN pjdke.bestellung b ON bp.bestellnr = b.bestellnr)
                           UNION (SELECT
-                                   concat(b.bestellnr, posnr)  AS 'id',
-                                   'pjdke.bestellung erstellt' AS 'type',
-                                   bp.erstelltTs               AS 'when'
+                                   concat(b.bestellnr, posnr) AS 'id',
+                                   'Bestellung erstellt'      AS 'type',
+                                   bp.erstelltTs              AS 'when'
                                  FROM pjdke.bestellung b
                                    JOIN pjdke.bestellpos bp ON b.bestellnr = bp.bestellnr)
                           UNION (SELECT
-                                   concat(b.bestellnr, posnr)     AS 'id',
-                                   'pjdke.bestellung freigegeben' AS 'type',
-                                   freigabets                     AS 'when'
+                                   concat(b.bestellnr, posnr) AS 'id',
+                                   'Bestellung freigegeben'   AS 'type',
+                                   freigabets                 AS 'when'
                                  FROM pjdke.bestellung b
                                    JOIN pjdke.bestellpos bp ON b.bestellnr = bp.bestellnr)
                           UNION (SELECT
@@ -120,9 +120,9 @@ CREATE TABLE log AS SELECT *
                                    a.type,
                                    a.`when`
                                  FROM (SELECT
-                                         id                           AS 'bestellnr',
-                                         'pjdke.bestellung storniert' AS 'type',
-                                         aenderts                     AS 'when'
+                                         id                     AS 'bestellnr',
+                                         'Bestellung storniert' AS 'type',
+                                         aenderts               AS 'when'
                                        FROM pjdke.Änderungshistorie
                                        WHERE tabelle = 'pjdke.bestellung' AND feld = 'StornoKZ') a
                                    JOIN pjdke.bestellpos bp ON a.bestellnr = bp.bestellnr)) t
