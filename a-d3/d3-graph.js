@@ -13,6 +13,7 @@ app.directive('d3Graph', ['filterFilter', function (filterFilter) {
         }
         if (data.length === 0 || data.nodes === undefined) return;
         let nodes = data.nodes, links = data.links, labelType = data.labelType;
+        console.log('nodes', nodes, 'labelType', labelType);
         if (nodes.length === 0 || links.length === 0) {
             return;
         }
@@ -26,32 +27,76 @@ app.directive('d3Graph', ['filterFilter', function (filterFilter) {
                 return {};
             });
 //TODO Oliver
-        nodes.forEach(function (d) {
-            let returnedData = filterFilter(nodes, function (element) {
-                console.log(element.node, d.node, element, d);
-                return element.node === d.node;
-            });
-            console.log("returnedData", returnedData, "nodes", nodes);
-            //Farben nach Knotentyp zuordnen
-            if (returnedData.length > 1) {
-                g.setNode(d.type, {label: d.type + " (" + d.cnt + ")", style: "fill: #FA9393"});
-            }//Wenn ein Typ Inner & End ist (evtl extra Farbe einführen: #EEC591)
-            else if (returnedData[0].nodetype == "start") {
-                g.setNode(d.type, {label: d.type + " (" + d.cnt + ")", style: "fill: #93FA97"});
+        let nodeMap = {};
+        const INNER = 'inner', START = 'start', END = 'end', ALL = 'all';
+        const colorMap = {};
+        colorMap[INNER] = '#787878';
+        colorMap[START] = '#0db14c';
+        colorMap[END] = '#e50101';
+        colorMap[ALL] = '#d4b400';
+        nodes.forEach(function (curElem) {
+            let exists = nodeMap[curElem.node] !== undefined;
+            // console.log(curElem.node, 'exists in', nodeMap, ' ?', exists);
+            let nodeType = curElem.nodetype;
+            if (!exists) {
+                nodeMap[curElem.node] = curElem;
+                nodeMap[curElem.node].nodetype = [];
             }
-            else if (returnedData[0].nodetype == "end") {
-                g.setNode(d.type, {label: d.type + " (" + d.cnt + ")", style: "fill: #FA9393"});
-            }
-            else if (returnedData[0].nodetype == "inner") {
-                g.setNode(d.type, {label: d.type + " (" + d.cnt + ")"});
-            }
+            nodeMap[curElem.node].nodetype.push(nodeType);
         });
 
-        links.forEach(function (d) {
-            if (labelType == "cnt")
-                g.setEdge(d.from, d.to, {lineInterpolate: 'basis', label: d.cnt});
-            else if (labelType == "sec")
-                g.setEdge(d.from, d.to, {lineInterpolate: 'basis', label: d.deltaSec});
+        let keys = Object.keys(nodeMap);
+        keys.forEach(function (key) {
+            let style;
+            //  console.log('nodeMap[' + key + ']', nodeMap[key]);
+            let noteTypeLength = nodeMap[key].nodetype.length;
+            //    console.log('1', nodeMap[key]);
+            let innerIndex = nodeMap[key].nodetype.indexOf(INNER);
+            //   console.log('1a');
+            if (nodeMap[key].nodetype.length == 1) {
+                //  console.log('2.1');
+                if (innerIndex >= 0) {
+                    //      console.log('2.1.1');
+                    style = colorMap[INNER];
+                } else {
+                    //      console.log('2.2');
+                    if (nodeMap[key].nodetype.indexOf(START) >= 0) {
+                        //     console.log('2.2.1');
+                        style = colorMap[START]
+                    } else {
+                        //     console.log('2.2.1');
+                        style = colorMap[END];
+                    }
+                }
+            } else {
+                //   console.log('2.3');
+                // the node has more than one function
+                if (noteTypeLength > 2) {
+                    //   console.log('2.3.1');
+                    style = colorMap[ALL];
+                } else {
+                    console.log('2.3.2');
+                    if (nodeMap[key].nodetype.indexOf(START) >= 0) {
+                        // console.log('2.3.2.1');
+                        style = colorMap[START]
+                    } else {
+                        // console.log('2.3.2.2');
+                        style = colorMap[END];
+                    }
+                }
+            }
+            console.log('3 style=', style);
+            g.setNode(key, {label: key, style: "fill: " + style})
+        });
+
+        console.log('nodeMap', nodeMap);
+        links.forEach(function (curLink) {
+            let label;
+            if (labelType === "cnt")
+                label = curLink.cnt;
+            else if (labelType === "sec")
+                label = curLink.deltaSec;
+            g.setEdge(curLink.from, curLink.to, {lineInterpolate: 'basis', label: label});
         });
 
         //Kanten der Nodes abrunden
@@ -65,7 +110,7 @@ app.directive('d3Graph', ['filterFilter', function (filterFilter) {
 
 
         //Zentrieren
-        let offset = (svg.attr("width") - g.graph().width) / 2;
+        let offset = (600 - g.graph().width) / 2;
         svgGroup.attr("transform", "translate(" + offset + ", 50)");
 
 
