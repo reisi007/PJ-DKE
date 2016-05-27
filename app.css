@@ -37,12 +37,12 @@ d3-range, d3-bar {
   max-width: 350px; }
 
 #left {
-  width: 600px;
+  width: 900px;
   float: left;
   height: 100%; }
 
 #right {
-  margin-left: 600px;
+  margin-left: 900px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

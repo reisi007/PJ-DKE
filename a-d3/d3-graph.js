@@ -1,7 +1,7 @@
 /**
  * Created by Florian on 19.03.2016.
  */
-app.directive('d3Graph', ['filterFilter', function (filterFilter) {
+app.directive('d3Graph', ['parseDuration', function (parseDuration) {
     let createDiagram = function ($scope, elem, attrs) {
         let data = attrs.d3Data;
         let id = attrs.id;
@@ -13,7 +13,7 @@ app.directive('d3Graph', ['filterFilter', function (filterFilter) {
         }
         if (data.length === 0 || data.nodes === undefined) return;
         let nodes = data.nodes, links = data.links, labelType = data.labelType;
-        console.log('nodes', nodes, 'labelType', labelType);
+        // console.log('nodes', nodes, 'labelType', labelType);
         if (nodes.length === 0 || links.length === 0) {
             return;
         }
@@ -75,7 +75,7 @@ app.directive('d3Graph', ['filterFilter', function (filterFilter) {
                     //   console.log('2.3.1');
                     style = colorMap[ALL];
                 } else {
-                    console.log('2.3.2');
+                    // console.log('2.3.2');
                     if (nodeMap[key].nodetype.indexOf(START) >= 0) {
                         // console.log('2.3.2.1');
                         style = colorMap[START]
@@ -85,18 +85,21 @@ app.directive('d3Graph', ['filterFilter', function (filterFilter) {
                     }
                 }
             }
-            console.log('3 style=', style);
+            //   console.log('3 style=', style);
             g.setNode(key, {label: key, style: "fill: " + style})
         });
 
-        console.log('nodeMap', nodeMap);
+        // console.log('nodeMap', nodeMap);
         links.forEach(function (curLink) {
             let label;
-            if (labelType === "cnt")
+            if (labelType === "Count")
                 label = curLink.cnt;
-            else if (labelType === "sec")
-                label = curLink.deltaSec;
-            g.setEdge(curLink.from, curLink.to, {lineInterpolate: 'basis', label: label});
+            else if (labelType === "Time")
+                label = parseDuration(curLink.deltaSec);
+            else
+                label = '???';
+            console.log(curLink, label, 'labeltype=', labelType);
+            g.setEdge(curLink.from, curLink.to, {lineInterpolate: 'basis', label: '(' + label + ')'});
         });
 
         //Kanten der Nodes abrunden
@@ -110,13 +113,20 @@ app.directive('d3Graph', ['filterFilter', function (filterFilter) {
 
 
         //Zentrieren
-        let offset = (600 - g.graph().width) / 2;
+
+
+        const svgWidth = svg[0][0].scrollWidth;
+        const svgHeight = svg[0][0].scrollHeight;
+        const graphWidth = g.graph().width;
+        let offset = (svgWidth - graphWidth) / 2;
         svgGroup.attr("transform", "translate(" + offset + ", 50)");
 
 
         //Zoomen
+        const zoom = d3.behavior.zoom();
+        zoom.size([svgWidth, svgHeight]);
         d3.select("svg")
-            .call(d3.behavior.zoom().on("zoom", function () {
+            .call(zoom.on("zoom", function () {
                 svg.select("g")
                     .attr("transform", "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
             }));

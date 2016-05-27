@@ -156,3 +156,74 @@ app.factory('api', ['$http', function ($http) {
         widthIds: withIds
     }
 }]);
+/**
+ * Returns a beautiful string based. Input -> Seconds
+ */
+app.factory('parseDuration', function () {
+    const yearSec = 31536000, monthSec = 2592000, daySec = 86400;
+    let second = function (sec, string) {
+        if (sec === 0) {
+            if (string.length > 0)
+                return string;
+            return ' Immediately ';
+        }
+        else
+            return string + ' ' + Math.round(sec * 100) / 100 + ' sec ';
+    }, minute = function (sec, string) {
+        let min = Math.floor(sec / 60);
+        let text;
+        if (min === 0) {
+            text = '';
+        }
+        else {
+            text = ' ' + min + ' min';
+        }
+        return second(sec - 60 * min, string + text);
+    }, hour = function (sec, string) {
+        let hr = Math.floor(sec / 3600);
+        let text;
+        if (hr === 0) {
+            text = '';
+        }
+        else {
+            text = ' ' + hr + ' h';
+        }
+        return minute(sec - 3600 * hr, string + text);
+    }, day = function (sec, string) {
+        let day = Math.floor(sec / daySec);
+        let text;
+        if (day === 0) {
+            text = '';
+        }
+        else {
+            text = ' ' + day + ' d';
+        }
+        return hour(sec - daySec * day, string + text);
+    }, month = function (sec, string) {
+        let months = Math.floor(sec / monthSec);
+        let text;
+        if (months === 0) {
+            text = '';
+        }
+        else {
+            text = ' ' + months + ' months';
+        }
+        return day(sec - monthSec * months, string + text)
+    }, year = function (sec, string) {
+        let years = Math.floor(sec / yearSec);
+        let text;
+        if (years === 1) {
+            text = ' 1 yr';
+        }
+        else if (years === 0) {
+            text = '';
+        }
+        else {
+            text = ' ' + years + ' yrs';
+        }
+        return month(sec - yearSec * years, string + text)
+    };
+    return function (sec) {
+        return year(sec, '');
+    };
+});
