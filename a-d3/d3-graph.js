@@ -98,7 +98,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
                 label = parseDuration(curLink.deltaSec);
             else
                 label = '???';
-            console.log(curLink, label, 'labeltype=', labelType);
+            //  console.log(curLink, label, 'labeltype=', labelType);
             g.setEdge(curLink.from, curLink.to, {lineInterpolate: 'basis', label: '(' + label + ')'});
         });
 
@@ -110,26 +110,25 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         let render = new dagreD3.render();
         let svgGroup = svg.append("g");
         render(d3.select("svg g"), g);
-
-
-        //Zentrieren
-
-
         const svgWidth = svg[0][0].scrollWidth;
         const svgHeight = svg[0][0].scrollHeight;
         const graphWidth = g.graph().width;
-        let offset = (svgWidth - graphWidth) / 2;
-        svgGroup.attr("transform", "translate(" + offset + ", 50)");
+        const graphHeight = g.graph().height;
 
-
-        //Zoomen
+        //Zoom & center
+        
         const zoom = d3.behavior.zoom();
         zoom.size([svgWidth, svgHeight]);
-        d3.select("svg")
-            .call(zoom.on("zoom", function () {
-                svg.select("g")
-                    .attr("transform", "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
-            }));
+        const neededScale = Math.min(svgWidth / graphWidth, svgHeight / graphHeight, 1);
+        svg.call(zoom.on("zoom", function () {
+            let h = (svgHeight - graphHeight * neededScale) / 2, w = (svgWidth - graphWidth * neededScale) / 2
+            svg.select("g")
+                .attr("transform", "translate(" + /* d3.event.translate*/ w + ',' + h + ") scale(" + d3.event.scale + ")");
+        }));
+
+        zoom.scale(neededScale);
+        zoom.event(svg);
+
     };
     return {
         restrict: "A",
