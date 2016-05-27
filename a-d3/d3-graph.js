@@ -2,6 +2,7 @@
  * Created by Florian on 19.03.2016.
  */
 app.directive('d3Graph', ['parseDuration', function (parseDuration) {
+    let translateX = 0, translateY = 0, translateScale = 1;
     let createDiagram = function ($scope, elem, attrs) {
         let data = attrs.d3Data;
         let id = attrs.id;
@@ -26,7 +27,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
             .setDefaultEdgeLabel(function () {
                 return {};
             });
-//TODO Oliver
+
         let nodeMap = {};
         const INNER = 'inner', START = 'start', END = 'end', ALL = 'all';
         const colorMap = {};
@@ -116,16 +117,27 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         const graphHeight = g.graph().height;
 
         //Zoom & center
-        
+        let drag = d3.behavior.drag();
+        drag.on('drag', function () {
+            console.log(d3.event);
+            svg.select('g').attr("transform", "translate(" + ( translateX += d3.event.dx ) + ", " + (translateY += d3.event.dy ) + ")scale(" + translateScale + ")");
+            d3.event.sourceEvent.stopPropagation();
+        });
+        svg.call(drag);
         const zoom = d3.behavior.zoom();
         zoom.size([svgWidth, svgHeight]);
+        zoom.center([svgWidth / 2, svgHeight / 2]);
+
         const neededScale = Math.min(svgWidth / graphWidth, svgHeight / graphHeight, 1);
         svg.call(zoom.on("zoom", function () {
-            let h = (svgHeight - graphHeight * neededScale) / 2, w = (svgWidth - graphWidth * neededScale) / 2
-            svg.select("g")
-                .attr("transform", "translate(" + /* d3.event.translate*/ w + ',' + h + ") scale(" + d3.event.scale + ")");
+            console.log(d3.event);
+            if (translateX === 0 && translateY === 0) {
+                translateY = (svgHeight - graphHeight * neededScale) / 2;
+                translateX = (svgWidth - graphWidth * neededScale) / 2;
+            }
+            svg.select("g").attr("transform", "translate(" + translateX + ", " + translateY + ") scale(" + (translateScale = d3.event.scale) + ")");
+            d3.event.sourceEvent.stopPropagation();
         }));
-
         zoom.scale(neededScale);
         zoom.event(svg);
 
