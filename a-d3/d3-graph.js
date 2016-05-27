@@ -2,8 +2,11 @@
  * Created by Florian on 19.03.2016.
  */
 app.directive('d3Graph', ['parseDuration', function (parseDuration) {
-    let translateX = 0, translateY = 0, translateScale = 1;
+    let translateX, translateY, translateScale;
     let createDiagram = function ($scope, elem, attrs) {
+        translateX = 0;
+        translateY = 0;
+        translateScale = 1;
         let data = attrs.d3Data;
         let id = attrs.id;
         try {
@@ -31,9 +34,9 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         let nodeMap = {};
         const INNER = 'inner', START = 'start', END = 'end', ALL = 'all';
         const colorMap = {};
-        colorMap[INNER] = '#787878';
-        colorMap[START] = '#0db14c';
-        colorMap[END] = '#e50101';
+        colorMap[INNER] = '#c6c6c6';
+        colorMap[START] = '#30f07a';
+        colorMap[END] = '#ff4343';
         colorMap[ALL] = '#d4b400';
         nodes.forEach(function (curElem) {
             let exists = nodeMap[curElem.node] !== undefined;
@@ -126,7 +129,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         svg.call(drag);
         const zoom = d3.behavior.zoom();
         zoom.size([svgWidth, svgHeight]);
-        zoom.center([svgWidth / 2, svgHeight / 2]);
+        zoom.center(null);
 
         const neededScale = Math.min(svgWidth / graphWidth, svgHeight / graphHeight, 1);
         svg.call(zoom.on("zoom", function () {
