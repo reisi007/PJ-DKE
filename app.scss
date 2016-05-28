@@ -80,6 +80,25 @@ $rightColumnSize: 350px;
 svg#d3_1 {
   width: 100% - 2*$margin-lr;
   height: 100vh-9*$padding-footer;
+
+  @media screen and (max-height: 880px) {
+    height: 97vh-9*$padding-footer;
+  }
+  @media screen and (max-height: 810px) {
+    height: 96vh-9*$padding-footer;
+  }
+  @media screen and (max-height: 700px) {
+    height: 95vh-9*$padding-footer;
+  }
+  @media screen and (max-height: 620px) {
+    height: 94vh-9*$padding-footer;
+  }
+  @media screen and (max-height: 555px) {
+    height: 90vh-9*$padding-footer;
+  }
+  @media screen and (max-height: 500px) {
+    height: 85vh-9*$padding-footer;
+  }
 }
 
 footer.mdl-mini-footer {

@@ -69,6 +69,42 @@ svg#d3_1 {
   height: 82vh;
 }
 
+@media screen and (max-height: 880px) {
+  svg#d3_1 {
+    height: 79vh;
+  }
+}
+
+@media screen and (max-height: 810px) {
+  svg#d3_1 {
+    height: 78vh;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  svg#d3_1 {
+    height: 77vh;
+  }
+}
+
+@media screen and (max-height: 620px) {
+  svg#d3_1 {
+    height: 76vh;
+  }
+}
+
+@media screen and (max-height: 555px) {
+  svg#d3_1 {
+    height: 72vh;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  svg#d3_1 {
+    height: 67vh;
+  }
+}
+
 footer.mdl-mini-footer {
   padding-top: 2vh;
   padding-bottom: 2vh;
