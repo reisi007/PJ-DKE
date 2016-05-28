@@ -1,6 +1,6 @@
 $margin: 10px;
 $margin-lr: 1%;
-
+$padding-footer: 2vh;
 .mdl-layout__header-row {
   padding-left: 16px;
 }
@@ -9,15 +9,21 @@ svg {
   margin-top: $margin;
   margin-left: $margin-lr;
   margin-right: $margin-lr;
+  margin-bottom: $margin;
 }
 
 .mdl-button--floating-action {
+  $diameter: 40px;
   position: absolute;
-  right: 24px;
-  bottom: 24px;
-  padding-top: 24px;
-  margin-bottom: 0;
+  right: $padding-footer;
+  bottom: $padding-footer;
   z-index: 998;
+  .material-icons {
+    font-size: 20px;
+  }
+  min-width: 0;
+  width: $diameter;
+  height: $diameter;
 }
 
 d3-bar div {
@@ -39,7 +45,7 @@ d3-range {
     width: $w - 10px;
     display: block;
     div {
-      height: 8px;
+      height: 4px;
       &.active {
         background-color: #0eff03;
         color: black;
@@ -67,16 +73,27 @@ $rightColumnSize: 350px;
 }
 
 #left {
-
   margin-right: $rightColumnSize;
-}
-
-.clear {
-  clear: both;
+  height: 100%;
 }
 
 svg#d3_1 {
   width: 100% - 2*$margin-lr;
-  height: 78vh;
-  min-height: 300px;
+  height: 100vh-9*$padding-footer;
+}
+
+footer.mdl-mini-footer {
+  padding-top: $padding-footer;
+  padding-bottom: $padding-footer;
+}
+
+header {
+  .mdl-layout__header {
+    min-height: 0;
+    max-height: inherit;
+
+    .mdl-layout__header-row {
+      height: 4*$padding-footer;
+    }
+  }
 }

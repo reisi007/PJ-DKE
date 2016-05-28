@@ -5,15 +5,22 @@ svg {
   margin-top: 10px;
   margin-left: 1%;
   margin-right: 1%;
+  margin-bottom: 10px;
 }
 
 .mdl-button--floating-action {
   position: absolute;
-  right: 24px;
-  bottom: 24px;
-  padding-top: 24px;
-  margin-bottom: 0;
-  z-index: 998; }
+  right: 2vh;
+  bottom: 2vh;
+  z-index: 998;
+  min-width: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.mdl-button--floating-action .material-icons {
+  font-size: 20px;
+}
 
 d3-bar div {
   text-align: left; }
@@ -31,7 +38,8 @@ d3-range {
     width: 165px;
     display: block; }
     d3-range div.chart div {
-      height: 8px; }
+      height: 4px;
+    }
       d3-range div.chart div.active {
         background-color: #0eff03;
         color: black; }
@@ -53,15 +61,26 @@ d3-range, d3-bar {
 
 #left {
   margin-right: 350px;
+  height: 100%;
 }
-
-.clear {
-  clear: both; }
 
 svg#d3_1 {
   width: 98%;
-  height: 78vh;
-  min-height: 300px;
+  height: 82vh;
+}
+
+footer.mdl-mini-footer {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+header .mdl-layout__header {
+  min-height: 0;
+  max-height: inherit;
+}
+
+header .mdl-layout__header .mdl-layout__header-row {
+  height: 8vh;
 }
 
 /*# sourceMappingURL=app.css.map */

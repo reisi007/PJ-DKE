@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.*;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -47,11 +49,14 @@ public class Analyze {
         statement2.execute("DROP TABLE IF EXISTS routeInfo");
         statement2.execute(loadSqlfile(dir.resolve("step3.sql")));
         //Insert in route info
+        final Set<Integer> iHashes = new TreeSet<>();
+        final Map<String, Integer> iHashesHelperMap = new HashMap<>();
+        final BiFunction<String, Integer, Integer> iHashFinderHelper = (string, hash) -> uniqueiHashHelper(iHashes, iHashesHelperMap, string, hash);
         final PreparedStatement pstmt = connection.prepareStatement("INSERT INTO  routeInfo(id,hash,ihash) VALUES (?,?,?)");
         for (Map.Entry<Long, String> kvp : idHashCodeSet.entrySet()) {
             pstmt.setLong(1, kvp.getKey());
             pstmt.setString(2, kvp.getValue());
-            pstmt.setInt(3, kvp.getValue().hashCode());
+            pstmt.setInt(3, iHashFinderHelper.apply(kvp.getValue(), kvp.getValue().hashCode()));
             pstmt.addBatch();
         }
         pstmt.executeBatch();
@@ -124,4 +129,20 @@ public class Analyze {
     private static String loadSqlfile(Path p) throws IOException {
         return IOUtils.toString(Files.newBufferedReader(p));
     }
+
+    private static Integer uniqueiHashHelper(Set<Integer> set, Map<String, Integer> map, String text, int hash) {
+        if (map.containsKey(text))
+            return map.get(text);
+        boolean res = set.add(hash);
+        if (res) {
+            map.put(text, hash);
+            return hash;
+        }
+        if (Integer.MAX_VALUE == hash) {
+            return uniqueiHashHelper(set, map, text, Integer.MIN_VALUE);
+        }
+        return uniqueiHashHelper(set, map, text, hash + 1);
+    }
+
+    ;
 }
