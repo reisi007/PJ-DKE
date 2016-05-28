@@ -2,7 +2,9 @@
   padding-left: 16px; }
 
 svg {
-  margin: 10px;
+  margin-top: 10px;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .mdl-button--floating-action {
@@ -38,32 +40,28 @@ d3-range {
         color: white; }
 
 d3-range, d3-bar {
-  max-width: 350px; }
-
-#left {
-  width: 900px;
-  float: left;
-  height: 100%; }
+  width: 350px;
+  margin: 2.5px;
+}
 
 #right {
-  margin-left: 900px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: space-around;
-  height: auto;
-  margin-top: 10px; }
-  #right div.limit {
-    max-width: 300px; }
-  #right .item {
-    padding: 4px; }
+  position: absolute;
+  right: 0;
+  top: 10px;
+  width: 350px;
+}
+
+#left {
+  margin-right: 350px;
+}
 
 .clear {
   clear: both; }
 
 svg#d3_1 {
-  width: 100%;
-  height: 80vh;
-  min-height: 500px; }
+  width: 98%;
+  height: 78vh;
+  min-height: 300px;
+}
 
 /*# sourceMappingURL=app.css.map */

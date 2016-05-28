@@ -25,7 +25,10 @@ app.controller('RangeController', ['$scope', '$rootScope', function ($scope, $ro
         return ($scope.data.selectedIds.indexOf(routeId) == -1 ? 'in' : '') + 'active';
     };
     $scope.getWidth = function (base) {
-        return Math.sqrt(base * 50000) + 'px';
+        let max = $scope.data.routestats[0].coverage; // with id 1
+        let result = 10 * Math.sqrt(100 * base / max); //100 * base / max;
+        //console.log('width in %', result);
+        return result + '%';
     };
     $scope.clicked = function (routeId) {
         console.log('clicked', routeId);

@@ -122,7 +122,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         //Zoom & center
         let drag = d3.behavior.drag();
         drag.on('drag', function () {
-            console.log(d3.event);
+            //   console.log(d3.event);
             svg.select('g').attr("transform", "translate(" + ( translateX += d3.event.dx ) + ", " + (translateY += d3.event.dy ) + ")scale(" + translateScale + ")");
             d3.event.sourceEvent.stopPropagation();
         });
@@ -133,13 +133,14 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
 
         const neededScale = Math.min(svgWidth / graphWidth, svgHeight / graphHeight, 1);
         svg.call(zoom.on("zoom", function () {
-            console.log(d3.event);
+            //   console.log(d3.event);
             if (translateX === 0 && translateY === 0) {
                 translateY = (svgHeight - graphHeight * neededScale) / 2;
                 translateX = (svgWidth - graphWidth * neededScale) / 2;
             }
             svg.select("g").attr("transform", "translate(" + translateX + ", " + translateY + ") scale(" + (translateScale = d3.event.scale) + ")");
-            d3.event.sourceEvent.stopPropagation();
+            if (d3.event.sourceEvent !== null)
+                d3.event.sourceEvent.stopPropagation();
         }));
         zoom.scale(neededScale);
         zoom.event(svg);

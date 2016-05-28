@@ -1,10 +1,14 @@
+$margin: 10px;
+$margin-lr: 1%;
 
 .mdl-layout__header-row {
   padding-left: 16px;
 }
 
 svg {
-  margin: 10px;
+  margin-top: $margin;
+  margin-left: $margin-lr;
+  margin-right: $margin-lr;
 }
 
 .mdl-button--floating-action {
@@ -49,30 +53,22 @@ d3-range {
 }
 
 d3-range, d3-bar {
-  max-width: 350px;
+  width: 350px;
+  margin: $margin/4;
 }
 
-$leftColumnSize: 900px;
-#left {
-  width: $leftColumnSize;
-  float: left;
-  height: 100%;
-}
-
+$rightColumnSize: 350px;
 #right {
-  margin-left: $leftColumnSize;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: space-around;
-  height: auto;
-  margin-top: 10px;
-  div.limit {
-    max-width: 300px;
-  }
-  .item {
-    padding: 4px;
-  }
+  position: absolute;
+  right: 0;
+  top: $margin;
+  width: $rightColumnSize;
+
+}
+
+#left {
+
+  margin-right: $rightColumnSize;
 }
 
 .clear {
@@ -80,7 +76,7 @@ $leftColumnSize: 900px;
 }
 
 svg#d3_1 {
-  width: 100%;
-  height: 80vh;
-  min-height: 500px;
+  width: 100% - 2*$margin-lr;
+  height: 78vh;
+  min-height: 300px;
 }
