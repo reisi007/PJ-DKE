@@ -2,8 +2,8 @@
 namespace at\pjdke\g3;
 header('Content-Type: application/json');
 const user = 'root';
-const password = '1234';
-const connectUrl = 'mysql:host=localhost:3306;dbname=pjdke;charset=utf8mb4';
+const password = '@@cekt@@';
+const connectUrl = 'mysql:host=140.78.73.159;dbname=pjdke;charset=utf8mb4';
 if (
     (isset($_REQUEST['id']) && isset($_REQUEST['percentage'])) ||
     (!isset($_REQUEST['id']) && !isset($_REQUEST['percentage']))
@@ -65,7 +65,7 @@ if (isset($_REQUEST['id']))
     $id = $_REQUEST['id'];
 else {
     $p = $_REQUEST['percentage'];
-    $sql = 'SELECT routeId FROM routestat WHERE coverage <= ifnull((SELECT min(coverage) AS minCov FROM routestat WHERE coverage >= :percentage/100),1)';
+    $sql = 'SELECT routeId FROM routeStat WHERE coverage <= ifnull((SELECT min(coverage) AS minCov FROM routeStat WHERE coverage >= :percentage/100),1)';
     $pstmt = $connection->prepare($sql);
     $pstmt->bindParam(':percentage', $p);
     $pstmt->execute();

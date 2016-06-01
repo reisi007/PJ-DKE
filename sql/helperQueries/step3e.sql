@@ -5,9 +5,9 @@ CREATE TABLE naccRouteStats AS SELECT
                                       SELECT
                                         up.n            AS 'routeId',
                                         count(ri.ihash) AS cnt
-                                      FROM uniquepaths up
-                                        JOIN routeinfo ri ON up.ihash = ri.ihash
+                                      FROM uniquePaths up
+                                        JOIN routeInfo ri ON up.ihash = ri.ihash
                                       GROUP BY up.n
                                       ORDER BY cnt DESC
                                     ) a, (SELECT count(*) AS 'value'
-                                          FROM routeinfo) total;
+                                          FROM routeInfo) total;
