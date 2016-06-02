@@ -15,12 +15,11 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
             console.log(e);
             return;
         }
+
         if (data.length === 0 || data.nodes === undefined) return;
         let nodes = data.nodes, links = data.links, labelType = data.labelType;
         // console.log('nodes', nodes, 'labelType', labelType);
-        if (nodes.length === 0 || links.length === 0) {
-            return;
-        }
+       
         let svg = d3.select('#' + id);
 
         svg.selectAll("*").remove();
