@@ -19,7 +19,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         if (data.length === 0 || data.nodes === undefined) return;
         let nodes = data.nodes, links = data.links, labelType = data.labelType;
         // console.log('nodes', nodes, 'labelType', labelType);
-       
+
         let svg = d3.select('#' + id);
 
         svg.selectAll("*").remove();
@@ -102,7 +102,12 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
             else
                 label = '???';
             //  console.log(curLink, label, 'labeltype=', labelType);
-            g.setEdge(curLink.from, curLink.to, {lineInterpolate: 'basis', label: '(' + label + ')'});
+            let width = Math.log(curLink.cnt / 10) + 3;
+            g.setEdge(curLink.from, curLink.to, {
+                lineInterpolate: 'basis',
+                label: '(' + label + ')',
+                style: 'stroke-width: ' + width + 'px; fill: none;'
+            });
         });
 
         //Kanten der Nodes abrunden
