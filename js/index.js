@@ -12,7 +12,7 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     $scope.labeltype = 'Count';
     let performUpdate = function (rawData) {
         $scope.rawData = rawData;
-        console.log(rawData);
+        //console.log(rawData);
         const labelType = $scope.labeltype;
         if (labelType === undefined || rawData === undefined) return;
         $scope.graphData = {
@@ -59,7 +59,7 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     $scope.$watch('variant', watchUpdate);
     $scope.$watch('labeltype', watchUpdate);
     $scope.$watch('minCoverage', function () {
-        console.log('Reset Textfield');
+        //console.log('Reset Textfield');
         setTextFieldValue('');
         watchUpdate();
     });
@@ -67,7 +67,7 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     $scope.update();
 
     $scope.$on('addPath', function (event, args) {
-        console.log('Add ' + args, $scope.rawData);
+        //console.log('Add ' + args, $scope.rawData);
         let ids = $scope.rawData.ids;
         let max = $scope.rawData.routestat.length;
         let maxIndex = ids.indexOf(max);
@@ -80,7 +80,7 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
         setTextFieldValue(s);
     });
     $scope.$on('removePath', function (event, args) {
-        console.log('Remove ' + args, $scope.rawData);
+        //console.log('Remove ' + args, $scope.rawData);
         let ids = $scope.rawData.ids;
         ids.splice(ids.indexOf(args), 1);
         let s;
@@ -106,7 +106,7 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
         if ($scope.minCoverage === 0) {
             $scope.minCoverage = percentage;
         }
-        console.log('minCoverage', $scope.minCoverage);
+        //console.log('minCoverage', $scope.minCoverage);
         let slider = document.getElementById('slider');
         if (slider !== undefined && slider.MaterialSlider !== undefined) {
             slider.MaterialSlider.change(percentage);
@@ -121,9 +121,29 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
 
 
 app.factory('api', ['$http', function ($http) {
-    function call(data) {
-        let url = 'data.php';
-        return $http({
+    const PERCENTAGE = 'percentage', IDS = 'id';
+    let cache = {};
+    cache[PERCENTAGE] = {};
+    cache[IDS] = {};
+    function call(data, onSuccess) {
+        let type = null;
+        if (data[PERCENTAGE] !== undefined)
+            type = PERCENTAGE;
+        else if (data[IDS] !== undefined) {
+            type = IDS;
+        }
+        if (type === null)
+            return;
+        //Test for cache hit
+        let dataId = data[type];
+        let cacheResult = cache[type][dataId];
+        if (cacheResult !== undefined) {
+            // console.log('Cache hit', type, dataId, 'result:', cacheResult);
+            onSuccess(cacheResult);
+            return;
+        }
+        const url = 'data.php';
+        $http({
             method: 'POST',
             url: url,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -134,22 +154,27 @@ app.factory('api', ['$http', function ($http) {
                 return str.join("&");
             },
             data: data
-        })
+        }).then(function (res) {
+            //Add element to cache if not empty
+            if (res.data.nodes.length > 0) {
+                cache[type][dataId] = res;
+                //   console.log('Added cahce entry for', type, dataId, 'with value', res);
+            }
+            onSuccess(res);
+        }, function (res) {
+            console.log('Error: ' + JSON.stringify(res))
+        });
     }
 
     let percentage = function (percentage, onSuccess) {
-        call({percentage: percentage}).then(function onSucc(res) {
+        call({percentage: percentage}, function (res) {
             onSuccess(res.data);
-        }, function (res) {
-            console.log('Error: ' + JSON.stringify(res));
-        })
+        });
     };
+
     let withIds = function (idString, onSuccess) {
-        call({id: idString}).then(function onSuc(res) {
+        call({id: idString}, function (res) {
             onSuccess(res.data);
-        }, function onErr(res) {
-            console.log('Error: ');
-            console.log(res);
         });
     };
     return {

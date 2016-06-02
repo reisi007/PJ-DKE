@@ -31,7 +31,7 @@ app.controller('RangeController', ['$scope', '$rootScope', function ($scope, $ro
         return result + '%';
     };
     $scope.clicked = function (routeId) {
-        console.log('clicked', routeId);
+        // console.log('clicked', routeId);
         if ($scope.data.selectedIds.indexOf(routeId) == -1) {
             $rootScope.$broadcast('addPath', routeId);
         } else {
