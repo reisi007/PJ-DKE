@@ -4,7 +4,7 @@ CREATE TABLE log AS SELECT *
                                   concat(b.bestellnr, b.posnr) AS 'id',
                                   'Bestellmenge geändert'      AS 'type',
                                   h.aenderts                   AS 'when'
-                                FROM Änderungshistorie h
+                                FROM änderungshistorie h
                                   JOIN pjdke.bestellpos b ON h.id = b.bestellnr) bg
                           UNION (SELECT
                                    concat(pos.bestellnr, pos.posnr) AS 'id',
@@ -55,7 +55,7 @@ CREATE TABLE log AS SELECT *
                                          id                  AS 'kreditorId',
                                          'Kreditor gesperrt' AS 'type',
                                          aenderts            AS 'when'
-                                       FROM pjdke.Änderungshistorie
+                                       FROM pjdke.änderungshistorie
                                        WHERE tabelle = 'Kreditor' AND wertNeu = 'X') a
                                    JOIN pjdke.bestellung b ON a.kreditorId = b.krednr
                                    JOIN pjdke.bestellpos bp ON b.bestellnr = bp.bestellnr)
@@ -66,7 +66,7 @@ CREATE TABLE log AS SELECT *
                                  FROM (SELECT
                                          id,
                                          aenderts AS 'when'
-                                       FROM pjdke.Änderungshistorie
+                                       FROM pjdke.änderungshistorie
                                        WHERE tabelle = 'Bestellposition' AND feld = 'Preis') a
                                    JOIN (SELECT
                                            bestellnr,
@@ -109,10 +109,10 @@ CREATE TABLE log AS SELECT *
                                  FROM (SELECT
                                          id,
                                          aenderts
-                                       FROM pjdke.Änderungshistorie
+                                       FROM pjdke.änderungshistorie
                                        WHERE
                                          tabelle = 'Kreditor' AND wertAlt = '' AND
-                                         pjdke.Änderungshistorie.wertNeu = 'X') d
+                                         pjdke.änderungshistorie.wertNeu = 'X') d
                                    JOIN pjdke.bestellung b ON d.id = b.krednr
                                    JOIN pjdke.bestellpos bp ON b.bestellnr = bp.bestellnr)
                           UNION (SELECT
@@ -123,6 +123,6 @@ CREATE TABLE log AS SELECT *
                                          id                     AS 'bestellnr',
                                          'Bestellung storniert' AS 'type',
                                          aenderts               AS 'when'
-                                       FROM pjdke.Änderungshistorie
+                                       FROM pjdke.änderungshistorie
                                        WHERE tabelle = 'pjdke.bestellung' AND feld = 'StornoKZ') a
                                    JOIN pjdke.bestellpos bp ON a.bestellnr = bp.bestellnr)) t

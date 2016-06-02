@@ -6,5 +6,5 @@ CREATE TABLE graphData AS (
     f.next                                                          AS 'to',
     if(isnull(f.prev), 'start', if(isnull(f.next), 'end', 'inner')) AS nodetype
   FROM flow f
-    JOIN routeinfo r ON f.id = r.id
-    JOIN uniquepaths up ON r.ihash = up.ihash)
+    JOIN routeInfo r ON f.id = r.id
+    JOIN uniquePaths up ON r.ihash = up.ihash)

@@ -23,7 +23,7 @@ public class Import {
     private static final String ZAHLUNG = "zahlung";
 
     //Check password
-    public static final String JDBC_CONNECTION_STRING = "jdbc:mysql://localhost/?user=root&password=1234&useSSL=false";
+    public static final String JDBC_CONNECTION_STRING = "jdbc:mysql://140.78.73.159/?user=root&password=@@cekt@@&useSSL=false";
 
     public static void main(String[] args) throws Exception {
         log("Loading CSV");

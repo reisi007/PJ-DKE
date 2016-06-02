@@ -1,6 +1,6 @@
 SELECT
   `from` AS 'node',
   nodetype
-FROM graphdata
+FROM graphData
 WHERE route IN (%s)
 GROUP BY `from`, nodetype;
