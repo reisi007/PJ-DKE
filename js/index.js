@@ -10,28 +10,29 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
     $scope.boxplotData = [];
     $scope.barchartData = [];
     $scope.labeltype = 'Count';
+    let performUpdate = function (rawData) {
+        $scope.rawData = rawData;
+        console.log(rawData);
+        const labelType = $scope.labeltype;
+        if (labelType === undefined || rawData === undefined) return;
+        $scope.graphData = {
+            nodes: rawData.nodes,
+            links: rawData.links,
+            labelType: labelType
+        };
+        $scope.barchartData = rawData.nodestat;
+        $scope.boxplotData = {
+            selectedIds: rawData.ids,
+            routestats: rawData.routestat
+        }
+    };
 
     $scope.reset = function () {
-        location.reload();
+        api.withPerc(0, performUpdate);
     };
     let oldVariant = null, oldPercentage = null, oldLabel = null;
     $scope.update = function () {
-        let performUpdate = function (rawData) {
-            $scope.rawData = rawData;
-            console.log(rawData);
-            const labelType = $scope.labeltype;
-            if (labelType === undefined || rawData === undefined) return;
-            $scope.graphData = {
-                nodes: rawData.nodes,
-                links: rawData.links,
-                labelType: labelType
-            };
-            $scope.barchartData = rawData.nodestat;
-            $scope.boxplotData = {
-                selectedIds: rawData.ids,
-                routestats: rawData.routestat
-            }
-        };
+
         let variant = $scope.variant;
         if (variant) {
             if (variant !== oldVariant) {
