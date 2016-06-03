@@ -22,8 +22,8 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
         };
         $scope.barchartData = rawData.nodestat;
         $scope.boxplotData = {
-            selectedIds: angular.copy(rawData.ids),
-            routestats: angular.copy(rawData.routestat)
+            selectedIds: rawData.ids,
+            routestats: rawData.routestat
         }
     };
 
@@ -160,7 +160,7 @@ app.factory('api', ['$http', function ($http) {
                 cache[type][dataId] = res;
                 //   console.log('Added cahce entry for', type, dataId, 'with value', res);
             }
-            onSuccess(res);
+            onSuccess(angular.copy(res));
         }, function (res) {
             console.log('Error: ' + JSON.stringify(res))
         });
