@@ -38,11 +38,9 @@ d3-bar div {
 }
 
 d3-range {
-  $w: 175px;
   font-size: 0.8em;
-  width: $w;
   div.chart {
-    width: $w - 10px;
+    width: 95%;
     display: block;
     div {
       height: 4px;
@@ -55,6 +53,12 @@ d3-range {
         color: white;
       }
     }
+  }
+}
+
+d3-bar {
+  div {
+    width: 95%;
   }
 }
 

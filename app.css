@@ -33,9 +33,9 @@ d3-bar div {
 
 d3-range {
   font-size: 0.8em;
-  width: 175px; }
+}
   d3-range div.chart {
-    width: 165px;
+    width: 95%;
     display: block; }
     d3-range div.chart div {
       height: 4px;
@@ -46,6 +46,10 @@ d3-range {
       d3-range div.chart div.inactive {
         background-color: #4c7d47;
         color: white; }
+
+d3-bar div {
+  width: 95%;
+}
 
 d3-range, d3-bar {
   width: 350px;

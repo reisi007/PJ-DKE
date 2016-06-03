@@ -30,6 +30,14 @@ app.controller('RangeController', ['$scope', '$rootScope', function ($scope, $ro
         //console.log('width in %', result);
         return result + '%';
     };
+    let init = true;
+    $scope.$watch('data.routestats', function () {
+        if (init) {
+            componentHandler.upgradeDom();
+        } else {
+            unregister();
+        }
+    });
     $scope.clicked = function (routeId) {
         // console.log('clicked', routeId);
         if ($scope.data.selectedIds.indexOf(routeId) == -1) {
