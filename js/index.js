@@ -22,17 +22,17 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
         };
         $scope.barchartData = rawData.nodestat;
         $scope.boxplotData = {
-            selectedIds: rawData.ids,
-            routestats: rawData.routestat
+            selectedIds: angular.copy(rawData.ids),
+            routestats: angular.copy(rawData.routestat)
         }
     };
 
     $scope.reset = function () {
         api.withPerc(0, performUpdate);
+        setTextFieldValue('');
     };
     let oldVariant = null, oldPercentage = null, oldLabel = null;
     $scope.update = function () {
-
         let variant = $scope.variant;
         if (variant) {
             if (variant !== oldVariant) {
@@ -138,8 +138,8 @@ app.factory('api', ['$http', function ($http) {
         let dataId = data[type];
         let cacheResult = cache[type][dataId];
         if (cacheResult !== undefined) {
-            // console.log('Cache hit', type, dataId, 'result:', cacheResult);
-            onSuccess(cacheResult);
+            console.log('Cache hit', type, dataId, 'result:', cacheResult);
+            onSuccess(angular.copy(cacheResult));
             return;
         }
         const url = 'data.php';
