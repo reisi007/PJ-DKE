@@ -188,9 +188,25 @@ app.factory('api', ['$http', function ($http) {
  * Returns a beautiful string based. Input -> Seconds
  */
 app.factory('parseDuration', function () {
+    const data = [
+        {key: 'years', value: 31556736},
+        {key: 'months', value: 2592000},
+        {key: 'weeks', value: 604800},
+        {key: 'days', value: 86400},
+        {key: 'hours', value: 3600},
+        {key: 'minutes', value: 60}
+    ];
     return function (sec) {
         if (sec == 0)
             return 'Immediately';
+        for (let i = 0; i < data.length; i++) {
+            let cur = data[i];
+            let x = sec / cur.value;
+            if (x >= 1) {
+                x = parseFloat(Math.round(x * 100) / 100).toFixed(2);
+                return x + ' ' + cur.key;
+            }
+        }
         return sec + ' sec';
     };
 });
