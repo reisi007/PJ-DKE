@@ -93,6 +93,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         });
 
         // console.log('nodeMap', nodeMap);
+        const max = links[0].cnt / 10;
         links.forEach(function (curLink) {
             let label;
             if (labelType === "Count")
@@ -102,7 +103,8 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
             else
                 label = '???';
             //  console.log(curLink, label, 'labeltype=', labelType);
-            let width = Math.log(curLink.cnt / 10) + 3;
+            let width = Math.sqrt(curLink.cnt / max);
+            //   console.log('cnt', curLink.cnt, 'width', width);
             g.setEdge(curLink.from, curLink.to, {
                 lineInterpolate: 'basis',
                 label: '(' + label + ')',
