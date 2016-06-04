@@ -1,10 +1,9 @@
+//Variables
 $margin: 10px;
 $margin-lr: 1%;
 $padding-footer: 2vh;
-.mdl-layout__header-row {
-  padding-left: 16px;
-}
 
+//Graph / diagram rules
 svg {
   margin-top: $margin;
   margin-left: $margin-lr;
@@ -12,21 +11,18 @@ svg {
   margin-bottom: $margin;
 }
 
-.mdl-button--floating-action {
-  $diameter: 40px;
-  position: absolute;
-  right: $padding-footer;
-  bottom: $padding-footer;
-  z-index: 998;
-  .material-icons {
-    font-size: 20px;
+.dagree {
+  .node rect {
+    stroke: #606060;
+    stroke-width: 1.5px;
   }
-  min-width: 0;
-  width: $diameter;
-  height: $diameter;
+  .edgePath path {
+    stroke: black;
+  }
 }
 
-d3-bar div {
+ajs-bar div {
+  width: 95%;
   text-align: left;
   .bar {
     background-color: #c5d4ff;
@@ -37,7 +33,7 @@ d3-bar div {
   }
 }
 
-d3-range {
+ajs-coverage {
   font-size: 0.8em;
   div.chart {
     width: 95%;
@@ -56,16 +52,12 @@ d3-range {
   }
 }
 
-d3-bar {
-  div {
-    width: 95%;
-  }
-}
-
-d3-range, d3-bar {
+ajs-coverage, ajs-bar {
   width: 350px;
   margin: $margin/4;
 }
+
+//Custom main layout
 
 $rightColumnSize: 350px;
 #right {
@@ -79,30 +71,49 @@ $rightColumnSize: 350px;
 #left {
   margin-right: $rightColumnSize;
   height: 100%;
+
+  svg#d3_1 {
+    width: 100% - 2*$margin-lr;
+    height: 100vh-9*$padding-footer;
+
+    @media screen and (max-height: 880px) {
+      height: 96vh-9*$padding-footer;
+    }
+    @media screen and (max-height: 810px) {
+      height: 95vh-9*$padding-footer;
+    }
+    @media screen and (max-height: 700px) {
+      height: 94vh-9*$padding-footer;
+    }
+    @media screen and (max-height: 620px) {
+      height: 93vh-9*$padding-footer;
+    }
+    @media screen and (max-height: 555px) {
+      height: 91vh-9*$padding-footer;
+    }
+    @media screen and (max-height: 500px) {
+      height: 84vh-9*$padding-footer;
+    }
+  }
 }
 
-svg#d3_1 {
-  width: 100% - 2*$margin-lr;
-  height: 100vh-9*$padding-footer;
+// Extending MDL rules
+.mdl-button--floating-action {
+  $diameter: 40px;
+  position: absolute;
+  right: $padding-footer;
+  bottom: $padding-footer;
+  z-index: 998;
+  .material-icons {
+    font-size: 20px;
+  }
+  min-width: 0;
+  width: $diameter;
+  height: $diameter;
+}
 
-  @media screen and (max-height: 880px) {
-    height: 97vh-9*$padding-footer;
-  }
-  @media screen and (max-height: 810px) {
-    height: 96vh-9*$padding-footer;
-  }
-  @media screen and (max-height: 700px) {
-    height: 95vh-9*$padding-footer;
-  }
-  @media screen and (max-height: 620px) {
-    height: 94vh-9*$padding-footer;
-  }
-  @media screen and (max-height: 555px) {
-    height: 90vh-9*$padding-footer;
-  }
-  @media screen and (max-height: 500px) {
-    height: 85vh-9*$padding-footer;
-  }
+.mdl-layout__header-row {
+  padding-left: 16px;
 }
 
 footer.mdl-mini-footer {

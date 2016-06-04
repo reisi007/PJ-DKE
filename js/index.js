@@ -4,7 +4,7 @@
  */
 
 let app = angular.module('PjDke', []);
-app.controller('TestController', ['$scope', 'api', function ($scope, api) {
+app.controller('MainController', ['$scope', 'api', function ($scope, api) {
     $scope.rawData = undefined;
     $scope.graphData = [];
     $scope.boxplotData = [];
@@ -66,31 +66,36 @@ app.controller('TestController', ['$scope', 'api', function ($scope, api) {
 
     $scope.update();
 
-    $scope.$on('addPath', function (event, args) {
-        //console.log('Add ' + args, $scope.rawData);
+    $scope.$on('addRoute', function (event, args) {
+        // console.log('Add ' + args);
         let ids = $scope.rawData.ids;
-        let max = $scope.rawData.routestat.length;
-        let maxIndex = ids.indexOf(max);
-        if (maxIndex >= 0) {
-            ids.splice(maxIndex, 1);
+        console.log(ids);
+        let zeroIndex = ids.indexOf('0');
+        if (zeroIndex >= 0) {
+            ids.splice(zeroIndex, 1, args);
+        } else {
+            ids.push(args);
         }
-        ids.push(args);
         let s;
         s = ids.join(',');
         setTextFieldValue(s);
     });
-    $scope.$on('removePath', function (event, args) {
-        //console.log('Remove ' + args, $scope.rawData);
+    $scope.$on('removeRoute', function (event, args) {
+        // console.log('Remove ', args);
         let ids = $scope.rawData.ids;
         ids.splice(ids.indexOf(args), 1);
-        let s;
-        if (ids.length === 0)
-            s = $scope.rawData.routestat.length;
-        s = ids.join(',');
-        setTextFieldValue(s);
-    });
 
+        if (ids.length === 0)
+            ids.push(0); // No ID with value 0 exists (ID start with 1)
+
+        setTextFieldValue(ids.join(','));
+    });
+    /**
+     *
+     * @param {string} val
+     */
     function setTextFieldValue(val) {
+        //  console.log('Change ID textfield to "', val, '"', Object.prototype.toString.call(val), ' (needs to be [object String])');
         let textfield = document.getElementById('textInput');
         textfield = textfield.MaterialTextfield;
         if (textfield) {

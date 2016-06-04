@@ -2,32 +2,32 @@
  * Created by Florian on 19.03.2016.
  */
 
-app.directive('d3Bar', [function () {
+app.directive('ajsBar', [function () {
     return {
         restrict: 'E',
-        templateUrl: 'barchart.html',
+        templateUrl: 'barChart.html',
         scope: {
-            data: '=d3Data'
+            data: '=chartData'
         }
     }
 }]);
-app.directive('d3Range', [function () {
+app.directive('ajsCoverage', [function () {
     return {
         restrict: 'E',
-        templateUrl: 'rangeChart.html',
+        templateUrl: 'coverageChart.html',
         scope: {
-            data: '=d3Data'
+            data: '=chartData'
         }
     }
 }]);
-app.controller('RangeController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+app.controller('CoverageController', ['$scope', '$rootScope', function ($scope, $rootScope) {
     $scope.getActiveClass = function (routeId) {
         return ($scope.data.selectedIds.indexOf(routeId) == -1 ? 'in' : '') + 'active';
     };
     $scope.getWidth = function (base) {
         let max = $scope.data.routestats[0].coverage; // with id 1
-        let result = 10 * Math.sqrt(100 * base / max); //100 * base / max;
-        //console.log('width in %', result);
+        let result = 100 * (Math.sqrt(base / max) );
+        // console.log(base, 'width in %', result);
         return result + '%';
     };
     let init = true;
@@ -41,9 +41,9 @@ app.controller('RangeController', ['$scope', '$rootScope', function ($scope, $ro
     $scope.clicked = function (routeId) {
         // console.log('clicked', routeId);
         if ($scope.data.selectedIds.indexOf(routeId) == -1) {
-            $rootScope.$broadcast('addPath', routeId);
+            $rootScope.$broadcast('addRoute', routeId);
         } else {
-            $rootScope.$broadcast('removePath', routeId);
+            $rootScope.$broadcast('removeRoute', routeId);
         }
     }
 }]);

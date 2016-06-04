@@ -8,42 +8,23 @@
     <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="js/index.js"></script>
-    <script src="js/bars.js"></script>
-    <script src="a-d3/d3-graph.js"></script>
+    <script src="js/diagrams.js"></script>
+    <script src="js/graph.js"></script>
     <link rel="stylesheet" type="text/css" href="app.css">
     <meta charset="UTF-8">
     <title>Test</title>
-    <style id="css">
-        text {
-            font-weight: 300;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
-            font-size: 14px;
-        }
-
-        .node rect {
-            stroke: #999;
-            fill: #fff;
-            stroke-width: 1.5px;
-        }
-
-        .edgePath path {
-            stroke: #333;
-            stroke-width: 1.5px;
-        }
-
-    </style>
 </head>
-<body ng-app="PjDke" ng-controller="TestController as tCtrl">
+<body ng-app="PjDke" ng-controller="MainController as mCtrl">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">Process Miner</span>
+            <span class="mdl-layout-title">Process Miner 1.0</span>
         </div>
     </header>
     <main class="mdl-layout__content" ng-cloak>
         <div id="left">
-            <svg id="d3_1" class="item" data-d3-graph data-d3-data="{{graphData}}"></svg>
+            <svg id="d3_1" class="item dagree" data-d3-graph data-d3-data="{{graphData}}"></svg>
         </div>
         <div id="right">
             <div>
@@ -79,8 +60,8 @@
                     </div>
                 </div>
             </div>
-            <d3-range class="item" d3-data="boxplotData"></d3-range>
-            <d3-bar class="item" d3-data="barchartData"></d3-bar>
+            <ajs-coverage class="item" chart-data="boxplotData"></ajs-coverage>
+            <ajs-bar class="item" chart-data="barchartData"></ajs-bar>
         </div>
     </main>
     <!-- Colored FAB button with ripple -->

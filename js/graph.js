@@ -93,25 +93,27 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         });
 
         // console.log('nodeMap', nodeMap);
-        const max = links[0].cnt / 10;
-        links.forEach(function (curLink) {
-            let label;
-            if (labelType === "Count")
-                label = curLink.cnt;
-            else if (labelType === "Time")
-                label = parseDuration(curLink.deltaSec);
-            else
-                label = '???';
-            //  console.log(curLink, label, 'labeltype=', labelType);
-            let width = Math.sqrt(curLink.cnt / max);
-            //   console.log('cnt', curLink.cnt, 'width', width);
-            g.setEdge(curLink.from, curLink.to, {
-                lineInterpolate: 'basis',
-                label: '(' + label + ')',
-                style: 'stroke-width: ' + width + 'px; fill: none;'
+        // if needed because max needs minimum length of 1
+        if (links.length > 0) {
+            const max = links[0].cnt / 10;
+            links.forEach(function (curLink) {
+                let label;
+                if (labelType === "Count")
+                    label = curLink.cnt;
+                else if (labelType === "Time")
+                    label = parseDuration(curLink.deltaSec);
+                else
+                    label = '???';
+                //  console.log(curLink, label, 'labeltype=', labelType);
+                let width = Math.sqrt(curLink.cnt / max);
+                //   console.log('cnt', curLink.cnt, 'width', width);
+                g.setEdge(curLink.from, curLink.to, {
+                    lineInterpolate: 'basis',
+                    label: '(' + label + ')',
+                    style: 'stroke-width: ' + width + 'px; fill: none;'
+                });
             });
-        });
-
+        }
         //Kanten der Nodes abrunden
         g.nodes().forEach(function (v) {
             var node = g.node(v);
@@ -135,14 +137,16 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         svg.call(drag);
         const zoom = d3.behavior.zoom();
         zoom.size([svgWidth, svgHeight]);
-        zoom.center(null);
 
         const neededScale = Math.min(svgWidth / graphWidth, svgHeight / graphHeight, 1);
         svg.call(zoom.on("zoom", function () {
             //   console.log(d3.event);
             if (translateX === 0 && translateY === 0) {
-                translateY = (svgHeight - graphHeight * neededScale) / 2;
-                translateX = (svgWidth - graphWidth * neededScale) / 2;
+                if (graphHeight > 0 && graphWidth > 0) {
+                    //TODO Improve zooming
+                    translateY = (svgHeight - graphHeight * neededScale) / 2;
+                    translateX = (svgWidth - graphWidth * neededScale) / 2;
+                }
             }
             svg.select("g").attr("transform", "translate(" + translateX + ", " + translateY + ") scale(" + (translateScale = d3.event.scale) + ")");
             if (d3.event.sourceEvent !== null)
