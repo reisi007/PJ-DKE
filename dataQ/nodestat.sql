@@ -4,4 +4,4 @@ SELECT
 FROM graphData
 WHERE route IN (%s)
 GROUP BY `from`
-ORDER BY cnt DESC;
+ORDER BY cnt DESC, type;

@@ -5,4 +5,5 @@ SELECT
   count(*)          AS cnt
 FROM graphData
 WHERE nodetype != 'end' AND route IN (%s)
-GROUP BY `from`, `to`;
+GROUP BY `from`, `to`
+ORDER BY cnt DESC;
