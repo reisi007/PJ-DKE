@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <title>Test</title>
 </head>
-<body ng-app="PjDke" ng-controller="MainController as mCtrl">
+<body data-ng-app="PjDke" data-ng-controller="MainController as mCtrl">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
@@ -22,7 +22,7 @@
             <span class="mdl-layout-title">Process Miner 1.0</span>
         </div>
     </header>
-    <main class="mdl-layout__content" ng-cloak>
+    <main class="mdl-layout__content" data-ng-cloak>
         <div id="left">
             <svg id="d3_1" class="item dagree" data-d3-graph data-d3-data="{{graphData}}"></svg>
         </div>
@@ -33,12 +33,13 @@
                 <div class="limit item">
                     Coverage: {{updatePercentUI()}}%
                     <!-- Slider with Starting Value -->
-                    <input ng-init="minCoverage = 0" ng-model="minCoverage" ng-model-options='{ debounce: 100 }'
+                    <input data-ng-init="minCoverage = 0" data-ng-model="minCoverage"
+                           data-ng-model-options='{ debounce: 100 }'
                            id="slider" class="mdl-slider mdl-js-slider" tabindex="0"
                            type="range" step="0.1" min="0" max="100">
                     <!-- Numeric Textfield -->
                     <div id="textInput" class="mdl-textfield mdl-js-textfield">
-                        <input ng-model="variant" class="mdl-textfield__input" type="text"
+                        <input data-ng-model="variant" class="mdl-textfield__input" type="text"
                                pattern="[0-9]+(,[0-9]+)*"
                                id="varId">
                         <label class="mdl-textfield__label" for="varId">Variant number:</label>
@@ -47,13 +48,13 @@
                     <div class="flexbox">
                         <form action="">
                             <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="optCnt">
-                                <input type="radio" ng-model="labeltype" id="optCnt" class="mdl-radio__button"
+                                <input type="radio" data-ng-model="labeltype" id="optCnt" class="mdl-radio__button"
                                        name="options" value="Count" checked>
                                 <span class="mdl-radio__label">Count</span>
                             </label>
                             <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="optTime">
                                 <input type="radio" id="optTime" class="mdl-radio__button" name="options"
-                                       ng-model="labeltype" value="Time">
+                                       data-ng-model="labeltype" value="Time">
                                 <span class="mdl-radio__label">Duration</span>
                             </label>
                         </form>
@@ -65,7 +66,7 @@
         </div>
     </main>
     <!-- Colored FAB button with ripple -->
-    <button ng-click="reset()"
+    <button data-ng-click="reset()"
             class="mdl-button--floating-action mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
         <i class="material-icons">replay</i>
     </button>

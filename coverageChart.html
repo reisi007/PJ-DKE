@@ -1,8 +1,9 @@
-<div class="chart" ng-controller="CoverageController as cCtrl">
-    <div ng-repeat="cur in data.routestats track by cur.routeId">
+<div class="chart" data-ng-controller="CoverageController as cCtrl">
+    <div data-ng-repeat="cur in data.routestats track by cur.routeId">
         <div class="mdl-tooltip mdl-tooltip--left center" for="d3Range{{cur.routeId}}">{{cur.routeId}}</div>
-        <div ng-click="clicked(cur.routeId)" id="d3Range{{cur.routeId}}" ng-style="{'width':getWidth(cur.coverage)}"
-             ng-class="getActiveClass(cur.routeId)">
+        <div data-ng-click="clicked(cur.routeId)" id="d3Range{{cur.routeId}}"
+             data-ng-style="{'width':getWidth(cur.coverage)}"
+             data-ng-class="getActiveClass(cur.routeId)">
         </div>
     </div>
 </div>
