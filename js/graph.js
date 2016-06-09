@@ -52,7 +52,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         keys.forEach(function (key) {
             let style;
             //  console.log('nodeMap[' + key + ']', nodeMap[key]);
-            let noteTypeLength = nodeMap[key].nodetype.length;
+            let nodeTypeLength = nodeMap[key].nodetype.length;
             //    console.log('1', nodeMap[key]);
             let innerIndex = nodeMap[key].nodetype.indexOf(INNER);
             //   console.log('1a');
@@ -74,7 +74,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
             } else {
                 //   console.log('2.3');
                 // the node has more than one function
-                if (noteTypeLength > 2) {
+                if (nodeTypeLength > 2 || (nodeTypeLength == 2 && innerIndex == -1)) {
                     //   console.log('2.3.1');
                     style = colorMap[ALL];
                 } else {
