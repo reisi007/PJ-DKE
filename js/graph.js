@@ -121,7 +121,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         });
         let render = new dagreD3.render();
         let svgGroup = svg.append("g");
-        render(d3.select("svg g"), g);
+        render(svgGroup, g);
         const svgWidth = svg[0][0].scrollWidth;
         const svgHeight = svg[0][0].scrollHeight;
         const graphWidth = g.graph().width;
@@ -136,23 +136,32 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
         });
         svg.call(drag);
         const zoom = d3.behavior.zoom();
-        zoom.size([svgWidth, svgHeight]);
+        zoom.size([graphWidth, graphHeight]);
 
         const neededScale = Math.min(svgWidth / graphWidth, svgHeight / graphHeight, 1);
         svg.call(zoom.on("zoom", function () {
-            //   console.log(d3.event);
             if (translateX === 0 && translateY === 0) {
                 if (graphHeight > 0 && graphWidth > 0) {
-                    //TODO Improve zooming
+                    // Initial zoom
                     translateY = (svgHeight - graphHeight * neededScale) / 2;
                     translateX = (svgWidth - graphWidth * neededScale) / 2;
+                    zoom.translate([translateX, translateY]);
+                }
+            } else {
+                // Normal zooming
+                // console.log(d3.event.sourceEvent);
+                if (d3.event.sourceEvent !== null) {
+                    d3.event.sourceEvent.stopPropagation();
+
+                    translateX = d3.event.translate[0];
+                    translateY = d3.event.translate[1];
                 }
             }
             svg.select("g").attr("transform", "translate(" + translateX + ", " + translateY + ") scale(" + (translateScale = d3.event.scale) + ")");
-            if (d3.event.sourceEvent !== null)
-                d3.event.sourceEvent.stopPropagation();
         }));
+        // Set initial zoom scale
         zoom.scale(neededScale);
+        // Trigger manual zoom event (which will set translate)
         zoom.event(svg);
 
     };
