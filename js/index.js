@@ -69,7 +69,7 @@ app.controller('MainController', ['$scope', 'api', function ($scope, api) {
     $scope.$on('addRoute', function (event, args) {
         // console.log('Add ' + args);
         let ids = $scope.rawData.ids;
-        console.log(ids);
+        // console.log(ids);
         let zeroIndex = ids.indexOf('0');
         if (zeroIndex >= 0) {
             ids.splice(zeroIndex, 1, args);
