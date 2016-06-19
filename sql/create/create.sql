@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS pjdke.änderungshistorie
   id        BIGINT UNSIGNED,
   wertNeu   TEXT,
   wertAlt   TEXT,
-  aenderts  TIMESTAMP,
+  aenderts  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   aenderusr VARCHAR(16)
 );
 CREATE TABLE IF NOT EXISTS pjdke.bestellpos
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS pjdke.bestellpos
   preis         DOUBLE,
   währung       VARCHAR(3),
   stornokz      BOOLEAN,
-  erstelltTs    TIMESTAMP,
+  erstelltTs    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   erstellusr    VARCHAR(16),
   CONSTRAINT bestellpos_posnr_bestellnr_pk PRIMARY KEY (posnr, bestellnr)
 );
@@ -35,14 +35,14 @@ CREATE TABLE IF NOT EXISTS pjdke.creditor
   land      VARCHAR(2),
   SperrKZ   BOOLEAN,
   erstellus VARCHAR(16),
-  erstellt  TIMESTAMP
+  erstellt  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE IF NOT EXISTS pjdke.rechnung
 (
   rechnungsnr    BIGINT UNSIGNED PRIMARY KEY,
   positionsnr    INT UNSIGNED,
   bestellnr      INT UNSIGNED,
-  eingangsdatum  TIMESTAMP,
+  eingangsdatum  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   rechnungsdatum DATE,
   betrag         DOUBLE,
   währung        VARCHAR(3),
@@ -53,9 +53,9 @@ CREATE TABLE IF NOT EXISTS pjdke.bestellung
   bestellnr   BIGINT UNSIGNED PRIMARY KEY,
   krednr      BIGINT UNSIGNED,
   stornokz    BOOLEAN,
-  erstelltTs  TIMESTAMP,
+  erstelltTs  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   erstellusr  VARCHAR(16),
-  freigabets  TIMESTAMP,
+  freigabets  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   freigabeusr VARCHAR(16)
 );
 CREATE TABLE IF NOT EXISTS pjdke.wareneingang
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS pjdke.wareneingang
   bestellnr     BIGINT UNSIGNED,
   menge         INT UNSIGNED,
   mengeneinheit VARCHAR(2),
-  eingangsts    TIMESTAMP,
+  eingangsts    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   eingangsurs   VARCHAR(16),
   krednr        BIGINT UNSIGNED
 );
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS pjdke.zahlung
   rechnungsnr BIGINT UNSIGNED,
   betrag      DOUBLE,
   währung     VARCHAR(3),
-  zahlts      TIMESTAMP,
+  zahlts      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   zahlusr     VARCHAR(16),
   kreditornr  BIGINT UNSIGNED
 );
