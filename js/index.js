@@ -139,8 +139,13 @@ app.factory('api', ['$http', function ($http) {
         }
         if (type === null)
             return;
-        //Test for cache hit
+        // Get request param
         let dataId = data[type];
+        if (type === PERCENTAGE) {
+            dataId = Math.round(dataId * 10) / 10;
+            data[type] = dataId;
+        }
+        // Test for cache hit
         let cacheResult = cache[type][dataId];
         if (cacheResult !== undefined) {
             //console.log('Cache hit', type, dataId, 'result:', cacheResult);

@@ -105,7 +105,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
                 else
                     label = '???';
                 //  console.log(curLink, label, 'labeltype=', labelType);
-                let width = Math.sqrt(curLink.cnt / max);
+                let width = 0.15 + Math.sqrt(curLink.cnt / max);
                 //   console.log('cnt', curLink.cnt, 'width', width);
                 g.setEdge(curLink.from, curLink.to, {
                     lineInterpolate: 'basis',
