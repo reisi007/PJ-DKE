@@ -52,7 +52,7 @@ public class Analyze {
         final Set<Integer> iHashes = new TreeSet<>();
         final Map<String, Integer> iHashesHelperMap = new HashMap<>();
         final BiFunction<String, Integer, Integer> iHashFinderHelper = (string, hash) -> uniqueiHashHelper(iHashes, iHashesHelperMap, string, hash);
-        final PreparedStatement pstmt = connection.prepareStatement("INSERT INTO  routeInfo(id,hash,ihash) VALUES (?,?,?)");
+        final PreparedStatement pstmt = connection.prepareStatement("INSERT INTO  routeInfo(id,events,ihash) VALUES (?,?,?)");
         for (Map.Entry<Long, String> kvp : idHashCodeSet.entrySet()) {
             pstmt.setLong(1, kvp.getKey());
             pstmt.setString(2, kvp.getValue());
