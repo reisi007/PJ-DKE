@@ -74,7 +74,7 @@ app.directive('d3Graph', ['parseDuration', function (parseDuration) {
             } else {
                 //   console.log('2.3');
                 // the node has more than one function
-                if (nodeTypeLength > 2 || (nodeTypeLength == 2 && innerIndex == -1)) {
+                if (nodeTypeLength > 2 || (nodeTypeLength === 2 && innerIndex === -1)) {
                     //   console.log('2.3.1');
                     style = colorMap[ALL];
                 } else {
